@@ -1,8 +1,39 @@
 # **Contrastive Representation Learning for Single Cell Phenotyping in Fluorescent Whole Slide Imaging of Enrichment-free Liquid Biopsy**
 
-## **Project Overview**
+---
 
-This project develops a **deep contrastive learning framework** for identifying and stratifying single cells in whole slide immunofluorescence microscopy images derived from liquid biopsies.
+### **USAGE**
+
+This code was developed on Linux machinery and has only been adequately tested on Ubuntu 22.04. 
+
+Installation of github version
+
+1. Clone this repository
+```
+git@github.com:CSI-Cancer/deep_phenotyping.git
+cd deep_phenotyping
+```
+
+2. Create conda environment:
+```
+conda create --name deep_phenotyping --file requirements.txt
+conda activate deep_phenotyping
+conda list #verify installation
+```
+
+a. Run Model Training on Data (train_cl.py)
+
+b. Run pipeline in terminal 
+```
+pipeline/run.sh
+
+```
+
+---
+
+## **Overview**
+
+This work develops a **deep contrastive learning framework** for identifying and stratifying single cells in whole slide immunofluorescence microscopy images derived from liquid biopsies.
 
 Tumor-associated cells obtained from liquid biopsies hold promise for **cancer detection, diagnosis, prognosis, and monitoring**. However, their **rarity, heterogeneity, and plasticity** pose challenges for precise identification and characterization, particularly in clinical contexts.
 
@@ -135,15 +166,6 @@ Contains datasets required for training the models, including representation lea
 * **wbc\_classifier/**: Data specific to white blood cell classification.
 
 ---
-
-### **Environment Setup**
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 
 ## **License**
 
