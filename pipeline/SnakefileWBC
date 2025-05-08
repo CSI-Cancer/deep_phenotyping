@@ -1,0 +1,34 @@
+slides = {}
+with open(config['slides_metadata'], 'r') as fh:
+	lines = fh.read().splitlines()
+	for line in lines:
+		inputs = line.split('\t')
+		slides[inputs[0]] = {'suffix': inputs[1], 'path':inputs[2]}
+
+rule all:
+	input:
+		expand('data/output/cl_data/{s}/{s}.parquet.gz', s=slides.keys())
+
+rule detect_and_infer:
+	input:
+		path = lambda wildcards: slides[wildcards.slide]['path']
+	output:
+		'data/output/cl_data/{slide}/{slide}.parquet.gz'
+	params:
+		n_threads = config['n_threads'],
+		suffix = lambda wildcards: slides[wildcards.slide]['suffix'],
+		detect_and_infer = config['detect_and_infer'],
+		mask_model = config['mask_model_path'],
+		verbose = config['verbose'],
+		classifier_model = config['classifier_path'],
+		device = config['device']
+	shell:
+		'python {params.detect_and_infer} -i {input.path} -o ./{output}'
+		' --mask_model {params.mask_model}'
+		' -t {params.n_threads}'
+		' -F Tile%06d.{params.suffix} {params.verbose}'
+		' --classifier_model {params.classifier_model}'
+		' -w 75'
+		' --debug'
+		' --device {params.device}'
+

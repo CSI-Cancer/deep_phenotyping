@@ -1,0 +1,42 @@
+slides = {}
+with open(config['slides_metadata'], 'r') as fh:
+	lines = fh.read().splitlines()
+	for line in lines:
+		inputs = line.split('\t')
+		slides[inputs[0]] = {'suffix': inputs[1], 'path':inputs[2]}
+
+rule all:
+	input:
+		expand('data/output/pcctc/{s}/{s}.parquet.gz', s=slides.keys())
+
+rule detect_and_infer:
+	input:
+		path = lambda wildcards: slides[wildcards.slide]['path']
+	output:
+		'data/output/pcctc/{slide}/{slide}.parquet.gz'
+	params:
+		n_threads = config['n_threads'],
+		suffix = lambda wildcards: slides[wildcards.slide]['suffix'],
+		detect_and_infer = config['detect_and_infer'],
+		encode_model = config['encode_model_path'],
+		mask_model = config['mask_model_path'],
+		verbose = config['verbose'],
+		classifier_model = config['classifier_path'],
+		device = config['device'],
+		#frame = config['frame'],
+		#norm = config['normalization_path'],
+		#n_classes = config['n_classes'],
+		#scaler = config['scaler_path']
+	shell:
+		'python {params.detect_and_infer} -i {input.path} -o ./{output}'
+		' --encoder_model {params.encode_model}'
+		' --mask_model {params.mask_model}'
+		' -t {params.n_threads}'
+		' -F Tile%06d.{params.suffix} {params.verbose}'
+		' --classifier_model {params.classifier_model}'
+		' --device {params.device}'
+		#' -n {params.frame}'
+		#' --n_classes {params.n_classes}'
+		#' --scaler {params.scaler}'
+		#' --normalize {params.norm}'	
+

@@ -1,0 +1,48 @@
+method: bayes
+
+metric:
+  name: val_loss
+  goal: minimize
+
+parameters:
+  epochs:
+    value: 50
+  momentum:
+    value: 0.9
+  weight_decay:
+    value: 0.0001
+  size_per_class:
+    value: 2000
+  l_e:
+    value: 10   # max epoch for linear warm-up of lambda
+  l_b:
+    value: 0.96 # base for exponential decay of lambda
+  in_channels:
+    value: 5
+  base_lr:
+    values: [0.001]
+    #distribution: uniform
+    #min: 0.001
+    #max: 0.05
+  max_lr:
+    values: [0.01]
+    #distribution: uniform
+    #min: 0.01
+    #max: 0.1
+  batch_size:
+    value: 1024
+  h_dim:
+    value: 128 # [32, 64, 128, 256]
+  projection_dim:
+    value: 64 # [32, 64, 128, 256]
+  temperature:
+    #value: 0.3
+    distribution: uniform
+    min: 0.05
+    max: 0.3
+  optimizer:
+    value: adam
+  p_shuffle:
+    value: 0.5
+  scheduler:
+    value: LambdaLR

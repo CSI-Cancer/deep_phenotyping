@@ -1,0 +1,12 @@
+project_name: FinalModel_02_01_25
+random_seed: 42
+device: cuda:1
+data_path: /mnt/deepstore/LBxPheno/train_data/representation_learning/cl_data
+model_path: /mnt/deepstore/LBxPheno/src/representation_learning/output/models
+output_csv: /mnt/deepstore/LBxPheno/src/representation_learning/output/csv
+output_hdf: /mnt/deepstore/LBxPheno/src/representation_learning/output/hdf5
+count: 100
+wandb_key: acc757e2b7b115ac775cc6f3d2c30fb3fa846f60
+tune: True
+# augment: False
+# shuffle: False
