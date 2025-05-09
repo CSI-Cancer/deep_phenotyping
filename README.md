@@ -50,8 +50,9 @@ cd deep_phenotyping
 
 2. Create conda environment:
 ```
-conda create --name deep_phenotyping --file requirements.txt
+conda create --n deep_phenotyping python=3.9.7
 conda activate deep_phenotyping
+pip install -r requirements.txt
 conda list #verify installation
 ```
 
@@ -129,17 +130,7 @@ This directory houses the core scripts for both **representation learning** and 
    * **Scripts:**
 
      * `train_wbc.py`: Train the leukocyte classifier.
-     * `wbc_classifier.py`: Main classifier script.
-     * `wbc_dataloader.py`: Data loading utilities.
-     * `wbc_depletion.ipynb`: Notebook for evaluating classifier performance.
-
-2. **representation\_learning/**
-
-   * Implements the deep contrastive learning framework to extract robust features.
-   * **Scripts:**
-
-     * `train_cl.py`: Train the contrastive learning model.
-     * `model_cl.py`: Defines the contrastive learning model architecture.
+     * `wbc_classifier.py`: Main clapip install -r requirements.txtntrastive learning model architecture.
      * `data_loader.py`: Data handling and loading functions.
      * `cl_transforms.py`: Data augmentation and transformation functions.
    * **Configuration:**
@@ -147,20 +138,7 @@ This directory houses the core scripts for both **representation learning** and 
      * `config/config.yml`: Main configuration file for contrastive learning.
      * `config/sweep_config.yml`: Configuration for hyperparameter sweeps.
 
-3. **utils/**
-
-   * General utility scripts for data processing and analysis.
-   * **Scripts:**
-
-     * `generate_masks.py`: Create binary masks of single cells.
-     * `normalization_utils.py`: Preprocessing utilities to  normalize images.
-     * `utils.py`: Helper functions for various tasks.
-
----
-
-### **Training Data Directory (`train_data/`)**
-
-Contains datasets required for training the models, including representation learning and leukocyte classification. **This data is available upon request.** 
+3. **utils/**pip install -r requirements.txtning the models, including representation learning and leukocyte classification. **This data is available upon request.** 
 
 #### **Subdirectories:**
 
