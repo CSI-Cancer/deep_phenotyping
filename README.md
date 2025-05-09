@@ -50,7 +50,7 @@ cd deep_phenotyping
 
 2. Create conda environment:
 ```
-conda create --n deep_phenotyping python=3.9.7
+conda create -n deep_phenotyping python=3.9.7
 conda activate deep_phenotyping
 pip install -r requirements.txt
 conda list #verify installation
