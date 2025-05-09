@@ -4,157 +4,418 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ module.name }} - Deep Phenotyping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dracula.min.css">
     <style>
+        :root {
+            --primary: #9b59b6;
+            --primary-dark: #8e44ad;
+            --primary-light: #ba68c8;
+            --secondary: #6b5ce7;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --code-bg: #282a36;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --card-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Nunito', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #f8f7ff;
+            min-height: 100vh;
+        }
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f8ff;
+            padding: 0 20px;
         }
-        h1, h2, h3 {
-            color: #483D8B;
-        }
-        h1 {
-            border-bottom: 3px solid #9370DB;
-            padding-bottom: 10px;
-        }
-        pre {
-            background-color: #EFEFFF;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
+        
         a {
-            color: #6A5ACD;
+            color: var(--primary);
             text-decoration: none;
+            transition: color 0.2s;
         }
+        
         a:hover {
+            color: var(--primary-dark);
             text-decoration: underline;
         }
-        .function, .class {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 4px solid #9370DB;
-        }
-        .signature {
-            background-color: #483D8B;
-            color: white;
-            padding: 10px;
-            border-radius: 3px;
-            font-family: monospace;
-            overflow-x: auto;
-        }
+        
         header {
-            margin-bottom: 30px;
-            background-color: #483D8B;
+            background: var(--gradient);
             color: white;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
         }
-        header a {
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .nav-breadcrumb {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .nav-breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-breadcrumb a:hover {
             color: white;
-            margin-right: 15px;
+            text-decoration: none;
         }
-        footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e1e4e8;
-            color: #666;
-            font-size: 0.9em;
+        
+        .nav-breadcrumb i {
+            margin-right: 0.5rem;
         }
+        
+        .nav-breadcrumb .separator {
+            margin: 0 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
         .module-badge {
             display: inline-block;
-            background-color: #9370DB;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .content-wrapper {
+            padding: 2.5rem 0;
+        }
+        
+        .module-description {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--primary);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+            padding-left: 45px;
+            color: var(--primary-dark);
+        }
+        
+        .section-title i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background: var(--gradient);
             color: white;
-            padding: 5px 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(155, 89, 182, 0.3);
+        }
+        
+        .function, .class {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .function:hover, .class:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .function-header, .class-header {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(to right, rgba(155, 89, 182, 0.05), rgba(155, 89, 182, 0));
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .function-header::before, .class-header::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 15px;
+            box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.2);
+        }
+        
+        .function-header h3, .class-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .signature {
+            background: var(--code-bg);
+            color: white;
+            padding: 1.25rem 2rem;
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 0.95rem;
+        }
+        
+        .function-body, .class-body {
+            padding: 1.5rem 2rem;
+        }
+        
+        .methods-title {
+            margin: 2.5rem 0 1.5rem;
+            font-size: 1.3rem;
+            color: var(--primary);
+            border-bottom: 2px dashed rgba(155, 89, 182, 0.2);
+            padding-bottom: 0.75rem;
+        }
+        
+        .method {
+            background: #f8f7ff;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(155, 89, 182, 0.1);
+        }
+        
+        .method-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(155, 89, 182, 0.1);
+            background: rgba(155, 89, 182, 0.05);
+        }
+        
+        .method-header h5 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+        }
+        
+        .method-signature {
+            background: #2a2c39;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        
+        .method-body {
+            padding: 1.25rem 1.5rem;
+        }
+        
+        pre, code {
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+        }
+        
+        code:not(pre code) {
+            background: rgba(155, 89, 182, 0.1);
+            padding: 0.2em 0.4em;
             border-radius: 3px;
-            font-size: 0.8em;
-            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--primary-dark);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            margin-left: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1.5rem;
+            }
+            
+            .footer-links a {
+                margin: 0 0.75rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <a href="../../../index.html">Home</a>
-        <a href="../../index.html">src</a>
-        <a href="../index.html">leukocyte_classifier</a>
-        <h1>{{ module.name }}</h1>
-        <span class="module-badge">Leukocyte Classifier</span>
+        <div class="container header-content">
+            <div class="nav-breadcrumb">
+                <a href="../../../index.html"><i class="fas fa-home"></i>Home</a>
+                <span class="separator">›</span>
+                <a href="../../index.html">src</a>
+                <span class="separator">›</span>
+                <a href="../index.html">leukocyte_classifier</a>
+            </div>
+            <h1>{{ module.name }}</h1>
+            <span class="module-badge">Leukocyte Classifier</span>
+        </div>
     </header>
 
-    <div>
-        {{ module.docstring | to_html }}
-    </div>
-    
-    {% if module.submodules %}
-    <section id="submodules">
-        <h2>Submodules</h2>
-        <ul>
-        {% for submodule in module.submodules %}
-            <li><a href="{{ submodule.name.split('.')[-1] }}.html">{{ submodule.name }}</a></li>
-        {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
-    
-    {% if module.variables %}
-    <section id="variables">
-        <h2>Variables</h2>
+    <div class="content-wrapper container">
+        <div class="module-description">
+            {{ module.docstring | to_html }}
+        </div>
+        
+        {% if module.submodules %}
+        <h2 class="section-title"><i class="fas fa-sitemap"></i>Submodules</h2>
+        <div class="submodules-list">
+            <ul>
+            {% for submodule in module.submodules %}
+                <li><a href="{{ submodule.name.split('.')[-1] }}.html">{{ submodule.name }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        {% if module.variables %}
+        <h2 class="section-title"><i class="fas fa-cube"></i>Variables</h2>
         {% for variable in module.variables %}
             <div class="function">
-                <h3 id="{{ variable.name }}">{{ variable.name }}</h3>
-                {{ variable.docstring | to_html }}
+                <div class="function-header">
+                    <h3 id="{{ variable.name }}">{{ variable.name }}</h3>
+                </div>
+                <div class="function-body">
+                    {{ variable.docstring | to_html }}
+                </div>
             </div>
         {% endfor %}
-    </section>
-    {% endif %}
-    
-    {% if module.functions %}
-    <section id="functions">
-        <h2>Functions</h2>
+        {% endif %}
+        
+        {% if module.functions %}
+        <h2 class="section-title"><i class="fas fa-code"></i>Functions</h2>
         {% for function in module.functions %}
             <div class="function">
-                <h3 id="{{ function.name }}">{{ function.name }}</h3>
+                <div class="function-header">
+                    <h3 id="{{ function.name }}">{{ function.name }}</h3>
+                </div>
                 <div class="signature">{{ function.name }}{{ function.signature }}</div>
-                {{ function.docstring | to_html }}
+                <div class="function-body">
+                    {{ function.docstring | to_html }}
+                </div>
             </div>
         {% endfor %}
-    </section>
-    {% endif %}
-    
-    {% if module.classes %}
-    <section id="classes">
-        <h2>Classes</h2>
+        {% endif %}
+        
+        {% if module.classes %}
+        <h2 class="section-title"><i class="fas fa-cubes"></i>Classes</h2>
         {% for class in module.classes %}
             <div class="class">
-                <h3 id="{{ class.name }}">{{ class.name }}</h3>
+                <div class="class-header">
+                    <h3 id="{{ class.name }}">{{ class.name }}</h3>
+                </div>
                 <div class="signature">class {{ class.name }}{{ class.signature }}</div>
-                {{ class.docstring | to_html }}
-                
-                {% if class.methods %}
-                <h4>Methods</h4>
-                {% for method in class.methods %}
-                    <div class="function">
-                        <h5 id="{{ class.name }}.{{ method.name }}">{{ method.name }}</h5>
-                        <div class="signature">{{ method.name }}{{ method.signature }}</div>
-                        {{ method.docstring | to_html }}
-                    </div>
-                {% endfor %}
-                {% endif %}
+                <div class="class-body">
+                    {{ class.docstring | to_html }}
+                    
+                    {% if class.methods %}
+                    <h4 class="methods-title">Methods</h4>
+                    {% for method in class.methods %}
+                        <div class="method">
+                            <div class="method-header">
+                                <h5 id="{{ class.name }}.{{ method.name }}">{{ method.name }}</h5>
+                            </div>
+                            <div class="method-signature">{{ method.name }}{{ method.signature }}</div>
+                            <div class="method-body">
+                                {{ method.docstring | to_html }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
-    </section>
-    {% endif %}
+        {% endif %}
+    </div>
     
     <footer>
-        <p>&copy; 2023 Deep Phenotyping Project</p>
-        <p>Generated with <a href="https://pdoc3.github.io/pdoc/">pdoc</a></p>
+        <div class="container footer-content">
+            <div>
+                <p>&copy; 2023 Deep Phenotyping Project</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-book"></i> Publications</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
 </body>
 </html>
