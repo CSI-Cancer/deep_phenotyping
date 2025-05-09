@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ module.name }} - Deep Phenotyping</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8ff;
+        }
+        h1, h2, h3 {
+            color: #483D8B;
+        }
+        h1 {
+            border-bottom: 3px solid #9370DB;
+            padding-bottom: 10px;
+        }
+        pre {
+            background-color: #EFEFFF;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        a {
+            color: #6A5ACD;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .function, .class {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #9370DB;
+        }
+        .signature {
+            background-color: #483D8B;
+            color: white;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        header {
+            margin-bottom: 30px;
+            background-color: #483D8B;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        header a {
+            color: white;
+            margin-right: 15px;
+        }
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .module-badge {
+            display: inline-block;
+            background-color: #9370DB;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../../../index.html">Home</a>
+        <a href="../../index.html">src</a>
+        <a href="../index.html">leukocyte_classifier</a>
+        <h1>{{ module.name }}</h1>
+        <span class="module-badge">Leukocyte Classifier</span>
+    </header>
+
+    <div>
+        {{ module.docstring | to_html }}
+    </div>
+    
+    {% if module.submodules %}
+    <section id="submodules">
+        <h2>Submodules</h2>
+        <ul>
+        {% for submodule in module.submodules %}
+            <li><a href="{{ submodule.name.split('.')[-1] }}.html">{{ submodule.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+    
+    {% if module.variables %}
+    <section id="variables">
+        <h2>Variables</h2>
+        {% for variable in module.variables %}
+            <div class="function">
+                <h3 id="{{ variable.name }}">{{ variable.name }}</h3>
+                {{ variable.docstring | to_html }}
+            </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    {% if module.functions %}
+    <section id="functions">
+        <h2>Functions</h2>
+        {% for function in module.functions %}
+            <div class="function">
+                <h3 id="{{ function.name }}">{{ function.name }}</h3>
+                <div class="signature">{{ function.name }}{{ function.signature }}</div>
+                {{ function.docstring | to_html }}
+            </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    {% if module.classes %}
+    <section id="classes">
+        <h2>Classes</h2>
+        {% for class in module.classes %}
+            <div class="class">
+                <h3 id="{{ class.name }}">{{ class.name }}</h3>
+                <div class="signature">class {{ class.name }}{{ class.signature }}</div>
+                {{ class.docstring | to_html }}
+                
+                {% if class.methods %}
+                <h4>Methods</h4>
+                {% for method in class.methods %}
+                    <div class="function">
+                        <h5 id="{{ class.name }}.{{ method.name }}">{{ method.name }}</h5>
+                        <div class="signature">{{ method.name }}{{ method.signature }}</div>
+                        {{ method.docstring | to_html }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    <footer>
+        <p>&copy; 2023 Deep Phenotyping Project</p>
+        <p>Generated with <a href="https://pdoc3.github.io/pdoc/">pdoc</a></p>
+    </footer>
+</body>
+</html>
