@@ -1,91 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <title>Deep Phenotyping Documentation</title>
     <style>
         body {
-            display: flex;
-            font-family: Arial, sans-serif;
-        }
-        #sidebar {
-            width: 250px;
-            background: #333;
-            color: #fff;
-            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            overflow-y: auto;
+            line-height: 1.5;
         }
-        #content {
-            margin-left: 20px;
-            padding: 20px;
-            width: 100%;
+        h1, h2, h3 {
+            margin-top: 1.5em;
+            color: #1a1a1a;
         }
         a {
-            color: #fff;
+            color: #0366d6;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
-        h1, h2, h3 {
-            color: #333;
+        .module-section {
+            margin-bottom: 40px;
+            padding: 15px;
+            background-color: #f6f8fa;
+            border-radius: 5px;
         }
-        .subdir-title {
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        ul {
+        .module-list {
             list-style-type: none;
-            padding-left: 10px;
+            padding-left: 20px;
         }
-        li {
-            margin: 5px 0;
+        .module-list li {
+            margin-bottom: 8px;
+        }
+        .description {
+            color: #586069;
+            margin-top: 5px;
+        }
+        header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 20px;
+        }
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
-    <div id="sidebar">
-        <h2>Navigation</h2>
+    <header>
+        <h1>Deep Phenotyping Documentation</h1>
+        <p class="description">Contrastive Representation Learning for Single Cell Phenotyping in Fluorescent Whole Slide Imaging</p>
+    </header>
 
-        <div class="subdir-title">Pipeline / Src</div>
-        <ul>
-            <li><a href="./pipeline/src/index.html">Index</a></li>
-            <li><a href="./pipeline/src/combo_pipeline.html">Combo Pipeline</a></li>
-            <li><a href="./pipeline/src/pipeline.html">Pipeline</a></li>
-            <li><a href="./pipeline/src/wbc_detect.html">WBC Detect</a></li>
-        </ul>
+    <main>
+        <p>
+            This documentation provides information about the Deep Phenotyping framework, which uses 
+            contrastive learning for identifying and stratifying single cells in whole slide 
+            immunofluorescence microscopy images derived from liquid biopsies.
+        </p>
 
-        <div class="subdir-title">Leukocyte Classifier</div>
-        <ul>
-            <li><a href="./src/leukocyte_classifier/index.html">Index</a></li>
-            <li><a href="./src/leukocyte_classifier/train_wbc.html">Train WBC</a></li>
-            <li><a href="./src/leukocyte_classifier/wbc_classifier.html">WBC Classifier</a></li>
-            <li><a href="./src/leukocyte_classifier/wbc_dataloader.html">WBC Dataloader</a></li>
-        </ul>
+        <div class="module-section">
+            <h2>Core Modules</h2>
+            <ul class="module-list">
+                <li>
+                    <a href="src/representation_learning/index.html">Representation Learning</a>
+                    <p class="description">Core implementation of the contrastive learning framework.</p>
+                </li>
+                <li>
+                    <a href="src/leukocyte_classifier/index.html">Leukocyte Classifier</a>
+                    <p class="description">Classification models for leukocytes and other cell types.</p>
+                </li>
+                <li>
+                    <a href="src/utils/index.html">Utilities</a>
+                    <p class="description">Common utilities for data processing and analysis.</p>
+                </li>
+            </ul>
+        </div>
 
-        <div class="subdir-title">Representation Learning</div>
-        <ul>
-            <li><a href="./src/representation_learning/index.html">Index</a></li>
-            <li><a href="./src/representation_learning/cl_transforms.html">CL Transforms</a></li>
-            <li><a href="./src/representation_learning/data_loader.html">Data Loader</a></li>
-            <li><a href="./src/representation_learning/model_cl.html">Model CL</a></li>
-            <li><a href="./src/representation_learning/train_cl.html">Train CL</a></li>
-        </ul>
+        <div class="module-section">
+            <h2>Pipeline Components</h2>
+            <ul class="module-list">
+                <li>
+                    <a href="pipeline/src/index.html">Pipeline</a>
+                    <p class="description">End-to-end processing pipeline for whole slide images.</p>
+                </li>
+            </ul>
+        </div>
+    </main>
 
-        <div class="subdir-title">Utils</div>
-        <ul>
-            <li><a href="./src/utils/index.html">Index</a></li>
-            <li><a href="./src/utils/generate_masks.html">Generate Masks</a></li>
-            <li><a href="./src/utils/normalization_utils.html">Normalization Utils</a></li>
-            <li><a href="./src/utils/utils.html">Utils</a></li>
-        </ul>
-
-    </div>
-
-    <div id="content">
-        <h1>Welcome to the Deep Phenotyping Documentation</h1>
-        <p>This is the homepage of our project documentation. Use the sidebar to navigate through the sections.</p>
-    </div>
+    <footer>
+        <p>&copy; 2025 Deep Phenotyping Project</p>
+    </footer>
 </body>
 </html>
