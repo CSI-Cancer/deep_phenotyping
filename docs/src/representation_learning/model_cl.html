@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>src.representation_learning.model_cl API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.representation_learning.model_cl</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.representation_learning.model_cl.CL"><code class="flex name class">
+<span>class <span class="ident">CL</span></span>
+<span>(</span><span>in_channels=5, h_dim=128, projection_dim=32)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CL(nn.Module):
+    &#34;&#34;&#34;
+    Contrastive Learning (CL) model using a customizable encoder and projector network.
+    This model follows the SimCLR framework, where the input image is augmented to create
+    two views, which are then encoded and projected to a latent space for contrastive loss calculation.
+
+    Attributes:
+        encoder (nn.Module): The feature extractor network.
+        projector (nn.Sequential): The projection head to map features to latent space.
+        h_dim (int): Dimension of the hidden representation from the encoder.
+        base_size (int): The base image size after transformation.
+
+    Methods:
+        forward(x): Computes the latent representations of two augmented views.
+        get_latent(x): Returns the latent representation from the encoder without projection.
+    &#34;&#34;&#34;
+
+    def __init__(self, in_channels=5, h_dim=128, projection_dim=32): 
+        &#34;&#34;&#34;
+        Initializes the CL model.
+
+        Parameters:
+            in_channels (int): Number of input channels for the encoder (e.g., number of image channels).
+            h_dim (int): Dimension of the encoder&#39;s output features.
+            projection_dim (int): Dimension of the projected latent space.
+        &#34;&#34;&#34;
+        super(CL, self).__init__()
+
+        # Encoder network to extract features from input images
+        self.encoder = Encoder(input_channels=in_channels, output_features=h_dim)
+        self.h_dim = h_dim
+        self.base_size = 75
+
+        # Projector network to map the encoder output to the latent space
+        self.projector = nn.Sequential(
+            nn.Linear(h_dim, h_dim, bias=False),  # Linear layer without bias
+            nn.ReLU(),                           # Non-linear activation
+            nn.Linear(h_dim, projection_dim, bias=False)  # Final projection layer
+        ) 
+
+    # Forward method to compute latent representations
+    def forward(self, x):
+        &#34;&#34;&#34;
+        Performs forward pass through the CL model.
+
+        Parameters:
+            x (torch.Tensor): Input batch of images.
+
+        Returns:
+            Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+                - z_i: Projected representation of the first augmented view.
+                - z_j: Projected representation of the second augmented view.
+                - h_i: Encoder output for the first augmented view.
+                - h_j: Encoder output for the second augmented view.
+        &#34;&#34;&#34;
+
+        # Generate two augmented versions of the input
+        transform = self.simclr_transform()
+        x_i = transform(x)
+        x_j = transform(x)
+
+        # Encode both augmented views
+        h_i = self.encoder(x_i)
+        h_j = self.encoder(x_j)
+
+        # Project the encoded features to latent space
+        z_i = self.projector(h_i)
+        z_j = self.projector(h_j)
+
+        return z_i, z_j, h_i, h_j
+    
+    # Method to get latent representation without projection
+    def get_latent(self, x):
+        &#34;&#34;&#34;
+        Returns the latent representation of the input image using the encoder.
+
+        Parameters:
+            x (torch.Tensor): Input batch of images.
+
+        Returns:
+            torch.Tensor: Latent representation from the encoder.
+        &#34;&#34;&#34;
+        return self.encoder(x)
+
+    
+
+    @staticmethod
+    def loss(z_i, z_j, temperature):
+        &#34;&#34;&#34;
+        Computes the contrastive loss using normalized embeddings from two views (z_i and z_j).
+        The loss follows the InfoNCE formulation commonly used in contrastive learning frameworks.
+
+        Parameters:
+            z_i (torch.Tensor): Embeddings from the first view of the batch, of shape (N, D),
+                                where N is the batch size and D is the embedding dimension.
+            z_j (torch.Tensor): Embeddings from the second view of the batch, of shape (N, D).
+            temperature (float): Temperature scaling parameter for contrastive loss.
+
+        Returns:
+            torch.Tensor: The contrastive loss as a single scalar tensor.
+        &#34;&#34;&#34;
+        # Get the batch size
+        N = z_i.size(0)
+
+        # Concatenate the embeddings from both views along the batch dimension (2N, D)
+        z = torch.cat((z_i, z_j), dim=0)
+
+        # Normalize the concatenated embeddings along the feature dimension
+        z_normed = F.normalize(z, dim=1)
+
+        # Compute the cosine similarity matrix (2N, 2N)
+        cosine_similarity_matrix = torch.matmul(z_normed, z_normed.T)
+
+        # Create ground-truth labels for positive pairs
+        labels = torch.cat([torch.arange(N) for i in range(2)], dim=0)
+        labels = (labels.unsqueeze(0) == labels.unsqueeze(1)).float()
+        labels = labels.to(z.device)
+
+        # Remove self-similarity from the similarity matrix (diagonal elements)
+        mask = torch.eye(labels.shape[0], dtype=torch.bool).to(z.device)
+        labels = labels[~mask].view(labels.shape[0], -1)
+        cosine_similarity_matrix = cosine_similarity_matrix[~mask].view(cosine_similarity_matrix.shape[0], -1)
+
+        # Extract positive and negative similarities
+        positives = cosine_similarity_matrix[labels.bool()].view(labels.shape[0], -1)
+        negatives = cosine_similarity_matrix[~labels.bool()].view(labels.shape[0], -1)
+
+        # Concatenate positives and negatives for the logits
+        logits = torch.cat([positives, negatives], dim=1)
+
+        # Create target labels indicating positive pairs (0th column is positive)
+        labels = torch.zeros(logits.shape[0], dtype=torch.long).to(z.device)
+
+        # Apply temperature scaling
+        logits = logits / temperature
+
+        # Compute the cross-entropy loss
+        loss = F.cross_entropy(logits, labels)
+
+        return loss
+
+        
+    def simclr_transform(self):
+        &#34;&#34;&#34;Constructs the SimCLR data transformation pipeline.&#34;&#34;&#34;
+        transformations = []
+        color_jitter = CustomColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.2)  #Adjust the color jitter parameters as needed, these are optimized for changes seen in our data
+        transformations.append(transforms.RandomApply([color_jitter], p=0.5)) #apply color jitter with 50% probability
+        transformations.append(transforms.RandomRotation(degrees=180)) #rotate the image anywhere between -180 and 180 degrees
+        transformations.append(transforms.RandomHorizontalFlip(p=0.5)) #flip the image horizontally with 50% probability
+        transformations.append(transforms.RandomVerticalFlip(p=0.5)) #flip the image vertically with 50% probability
+        affine=transforms.RandomAffine(degrees=0, translate=(0.2,0.2)) #translate the image by up to 20% in both x and y directions to account for the fact that the cells are not always perfectly centered
+        transformations.append(transforms.RandomApply([affine], p=0.5)) #apply affine transformation with 50% probability
+
+        #OPTIONAL TRANSFORMATIONS
+        #erode_dilate = RandomErodeDilateTransform(kernel_size=5, iterations=1)
+        #transformations.append(transforms.RandomApply([erode_dilate], p=0.5))
+        #transformations.append(ZeroMask(p=0.5))
+        #transformations.append(OnesMask(p=0.5))
+
+        blur = transforms.GaussianBlur(kernel_size=3, sigma=(0.1, 3.0)) #blur the image with a kernel size of 3 and a sigma between 0.1 and 3.0
+        transformations.append(transforms.RandomApply([blur],p=0.75)) #apply blur with 75% probability, as we want to make sure that the model is robust to noise
+        random_crop = transforms.RandomResizedCrop(size=self.base_size, scale=(0.5, 1.0)) #crop the image to a random size between 50% and 100% of the original size to account for variance in cell size within class
+        transformations.append(transforms.RandomApply([random_crop], p=0.5)) #apply random crop with 50% probability
+
+        #OPTIONAL TRANSFORMATIONS
+        #if self.config.use_cutout:
+            #transformations.append(Cutout(n_holes=1, length=32))
+        #if self.config.use_guassian_noise:
+        #transformations.append(GaussianNoise(mean=0.0, std=0.1))
+
+        data_transforms = transforms.Compose(transformations) #combine all the transformations into a single transform
+        return data_transforms </code></pre>
+</details>
+<div class="desc"><p>Contrastive Learning (CL) model using a customizable encoder and projector network.
+This model follows the SimCLR framework, where the input image is augmented to create
+two views, which are then encoded and projected to a latent space for contrastive loss calculation.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>encoder</code></strong> :&ensp;<code>nn.Module</code></dt>
+<dd>The feature extractor network.</dd>
+<dt><strong><code>projector</code></strong> :&ensp;<code>nn.Sequential</code></dt>
+<dd>The projection head to map features to latent space.</dd>
+<dt><strong><code>h_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Dimension of the hidden representation from the encoder.</dd>
+<dt><strong><code>base_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>The base image size after transformation.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>forward(x): Computes the latent representations of two augmented views.
+get_latent(x): Returns the latent representation from the encoder without projection.</p>
+<p>Initializes the CL model.</p>
+<h2 id="parameters">Parameters</h2>
+<p>in_channels (int): Number of input channels for the encoder (e.g., number of image channels).
+h_dim (int): Dimension of the encoder's output features.
+projection_dim (int): Dimension of the projected latent space.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.representation_learning.model_cl.CL.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.representation_learning.model_cl.CL.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.representation_learning.model_cl.CL.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="src.representation_learning.model_cl.CL.loss"><code class="name flex">
+<span>def <span class="ident">loss</span></span>(<span>z_i, z_j, temperature)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def loss(z_i, z_j, temperature):
+    &#34;&#34;&#34;
+    Computes the contrastive loss using normalized embeddings from two views (z_i and z_j).
+    The loss follows the InfoNCE formulation commonly used in contrastive learning frameworks.
+
+    Parameters:
+        z_i (torch.Tensor): Embeddings from the first view of the batch, of shape (N, D),
+                            where N is the batch size and D is the embedding dimension.
+        z_j (torch.Tensor): Embeddings from the second view of the batch, of shape (N, D).
+        temperature (float): Temperature scaling parameter for contrastive loss.
+
+    Returns:
+        torch.Tensor: The contrastive loss as a single scalar tensor.
+    &#34;&#34;&#34;
+    # Get the batch size
+    N = z_i.size(0)
+
+    # Concatenate the embeddings from both views along the batch dimension (2N, D)
+    z = torch.cat((z_i, z_j), dim=0)
+
+    # Normalize the concatenated embeddings along the feature dimension
+    z_normed = F.normalize(z, dim=1)
+
+    # Compute the cosine similarity matrix (2N, 2N)
+    cosine_similarity_matrix = torch.matmul(z_normed, z_normed.T)
+
+    # Create ground-truth labels for positive pairs
+    labels = torch.cat([torch.arange(N) for i in range(2)], dim=0)
+    labels = (labels.unsqueeze(0) == labels.unsqueeze(1)).float()
+    labels = labels.to(z.device)
+
+    # Remove self-similarity from the similarity matrix (diagonal elements)
+    mask = torch.eye(labels.shape[0], dtype=torch.bool).to(z.device)
+    labels = labels[~mask].view(labels.shape[0], -1)
+    cosine_similarity_matrix = cosine_similarity_matrix[~mask].view(cosine_similarity_matrix.shape[0], -1)
+
+    # Extract positive and negative similarities
+    positives = cosine_similarity_matrix[labels.bool()].view(labels.shape[0], -1)
+    negatives = cosine_similarity_matrix[~labels.bool()].view(labels.shape[0], -1)
+
+    # Concatenate positives and negatives for the logits
+    logits = torch.cat([positives, negatives], dim=1)
+
+    # Create target labels indicating positive pairs (0th column is positive)
+    labels = torch.zeros(logits.shape[0], dtype=torch.long).to(z.device)
+
+    # Apply temperature scaling
+    logits = logits / temperature
+
+    # Compute the cross-entropy loss
+    loss = F.cross_entropy(logits, labels)
+
+    return loss</code></pre>
+</details>
+<div class="desc"><p>Computes the contrastive loss using normalized embeddings from two views (z_i and z_j).
+The loss follows the InfoNCE formulation commonly used in contrastive learning frameworks.</p>
+<h2 id="parameters">Parameters</h2>
+<p>z_i (torch.Tensor): Embeddings from the first view of the batch, of shape (N, D),
+where N is the batch size and D is the embedding dimension.
+z_j (torch.Tensor): Embeddings from the second view of the batch, of shape (N, D).
+temperature (float): Temperature scaling parameter for contrastive loss.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>The contrastive loss as a single scalar tensor.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="src.representation_learning.model_cl.CL.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    &#34;&#34;&#34;
+    Performs forward pass through the CL model.
+
+    Parameters:
+        x (torch.Tensor): Input batch of images.
+
+    Returns:
+        Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+            - z_i: Projected representation of the first augmented view.
+            - z_j: Projected representation of the second augmented view.
+            - h_i: Encoder output for the first augmented view.
+            - h_j: Encoder output for the second augmented view.
+    &#34;&#34;&#34;
+
+    # Generate two augmented versions of the input
+    transform = self.simclr_transform()
+    x_i = transform(x)
+    x_j = transform(x)
+
+    # Encode both augmented views
+    h_i = self.encoder(x_i)
+    h_j = self.encoder(x_j)
+
+    # Project the encoded features to latent space
+    z_i = self.projector(h_i)
+    z_j = self.projector(h_j)
+
+    return z_i, z_j, h_i, h_j</code></pre>
+</details>
+<div class="desc"><p>Performs forward pass through the CL model.</p>
+<h2 id="parameters">Parameters</h2>
+<p>x (torch.Tensor): Input batch of images.</p>
+<h2 id="returns">Returns</h2>
+<p>Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+- z_i: Projected representation of the first augmented view.
+- z_j: Projected representation of the second augmented view.
+- h_i: Encoder output for the first augmented view.
+- h_j: Encoder output for the second augmented view.</p></div>
+</dd>
+<dt id="src.representation_learning.model_cl.CL.get_latent"><code class="name flex">
+<span>def <span class="ident">get_latent</span></span>(<span>self, x)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_latent(self, x):
+    &#34;&#34;&#34;
+    Returns the latent representation of the input image using the encoder.
+
+    Parameters:
+        x (torch.Tensor): Input batch of images.
+
+    Returns:
+        torch.Tensor: Latent representation from the encoder.
+    &#34;&#34;&#34;
+    return self.encoder(x)</code></pre>
+</details>
+<div class="desc"><p>Returns the latent representation of the input image using the encoder.</p>
+<h2 id="parameters">Parameters</h2>
+<p>x (torch.Tensor): Input batch of images.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>Latent representation from the encoder.</dd>
+</dl></div>
+</dd>
+<dt id="src.representation_learning.model_cl.CL.simclr_transform"><code class="name flex">
+<span>def <span class="ident">simclr_transform</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def simclr_transform(self):
+    &#34;&#34;&#34;Constructs the SimCLR data transformation pipeline.&#34;&#34;&#34;
+    transformations = []
+    color_jitter = CustomColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.2)  #Adjust the color jitter parameters as needed, these are optimized for changes seen in our data
+    transformations.append(transforms.RandomApply([color_jitter], p=0.5)) #apply color jitter with 50% probability
+    transformations.append(transforms.RandomRotation(degrees=180)) #rotate the image anywhere between -180 and 180 degrees
+    transformations.append(transforms.RandomHorizontalFlip(p=0.5)) #flip the image horizontally with 50% probability
+    transformations.append(transforms.RandomVerticalFlip(p=0.5)) #flip the image vertically with 50% probability
+    affine=transforms.RandomAffine(degrees=0, translate=(0.2,0.2)) #translate the image by up to 20% in both x and y directions to account for the fact that the cells are not always perfectly centered
+    transformations.append(transforms.RandomApply([affine], p=0.5)) #apply affine transformation with 50% probability
+
+    #OPTIONAL TRANSFORMATIONS
+    #erode_dilate = RandomErodeDilateTransform(kernel_size=5, iterations=1)
+    #transformations.append(transforms.RandomApply([erode_dilate], p=0.5))
+    #transformations.append(ZeroMask(p=0.5))
+    #transformations.append(OnesMask(p=0.5))
+
+    blur = transforms.GaussianBlur(kernel_size=3, sigma=(0.1, 3.0)) #blur the image with a kernel size of 3 and a sigma between 0.1 and 3.0
+    transformations.append(transforms.RandomApply([blur],p=0.75)) #apply blur with 75% probability, as we want to make sure that the model is robust to noise
+    random_crop = transforms.RandomResizedCrop(size=self.base_size, scale=(0.5, 1.0)) #crop the image to a random size between 50% and 100% of the original size to account for variance in cell size within class
+    transformations.append(transforms.RandomApply([random_crop], p=0.5)) #apply random crop with 50% probability
+
+    #OPTIONAL TRANSFORMATIONS
+    #if self.config.use_cutout:
+        #transformations.append(Cutout(n_holes=1, length=32))
+    #if self.config.use_guassian_noise:
+    #transformations.append(GaussianNoise(mean=0.0, std=0.1))
+
+    data_transforms = transforms.Compose(transformations) #combine all the transformations into a single transform
+    return data_transforms </code></pre>
+</details>
+<div class="desc"><p>Constructs the SimCLR data transformation pipeline.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.representation_learning.model_cl.Encoder"><code class="flex name class">
+<span>class <span class="ident">Encoder</span></span>
+<span>(</span><span>input_channels, output_features)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Encoder(nn.Module):
+    &#34;&#34;&#34;
+    Encoder network for extracting latent features from input images.
+    This encoder consists of multiple convolutional layers, each followed by
+    batch normalization, ReLU activation, and pooling layers. The final representation
+    is obtained via adaptive average pooling and a fully connected layer.
+
+    Attributes:
+        conv1, conv2, conv3, conv4 (nn.Conv2d): Convolutional layers for feature extraction.
+        bn1, bn2, bn3, bn4 (nn.BatchNorm2d): Batch normalization layers for stabilizing training.
+        pool (nn.MaxPool2d): Max pooling layer to reduce spatial dimensions.
+        adap_pool (nn.AdaptiveAvgPool2d): Adaptive average pooling to generate fixed-size output.
+        fc (nn.Linear): Fully connected layer to generate the final latent representation.
+
+    Methods:
+        forward(x): Forward pass through the encoder to generate feature representations.
+    &#34;&#34;&#34;
+
+    def __init__(self, input_channels, output_features):
+        &#34;&#34;&#34;
+        Initializes the encoder model.
+
+        Parameters:
+            input_channels (int): Number of input channels (e.g., number of color channels in an image).
+            output_features (int): Number of output features (embedding dimension).
+        &#34;&#34;&#34;
+        super(Encoder, self).__init__()
+
+        # First convolutional block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        self.conv1 = nn.Conv2d(in_channels=input_channels, out_channels=32, kernel_size=(3, 3), stride=1, padding=1) 
+        self.bn1 = nn.BatchNorm2d(32)
+
+        # Second convolutional block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+
+        # Third convolutional block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        self.conv3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1)
+        self.bn3 = nn.BatchNorm2d(128)
+
+        # Fourth convolutional block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        self.conv4 = nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1)
+        self.bn4 = nn.BatchNorm2d(256)
+
+        # Pooling layers for downsampling
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)  # Max pooling to reduce spatial dimensions
+        self.adap_pool = nn.AdaptiveAvgPool2d((1, 1))  # Adaptive pooling to output 1x1 spatial dimensions
+
+        # Fully connected layer to produce final latent representation
+        self.fc = nn.Linear(256, output_features)
+
+    def forward(self, x):
+        &#34;&#34;&#34;
+        Forward pass through the encoder.
+
+        Parameters:
+            x (torch.Tensor): Input tensor of shape (batch_size, input_channels, height, width).
+
+        Returns:
+            torch.Tensor: Latent feature representation of shape (batch_size, output_features).
+        &#34;&#34;&#34;
+        # First block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        x = F.relu(self.bn1(self.conv1(x)))  # 75 x 75 x 5 -&gt; 75 x 75 x 32
+        x = self.pool(x)                    # 75 x 75 x 32 -&gt; 37 x 37 x 32
+
+        # Second block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        x = F.relu(self.bn2(self.conv2(x)))  # 37 x 37 x 32 -&gt; 37 x 37 x 64
+        x = self.pool(x)                    # 37 x 37 x 64 -&gt; 18 x 18 x 64
+
+        # Third block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        x = F.relu(self.bn3(self.conv3(x)))  # 18 x 18 x 64 -&gt; 18 x 18 x 128
+        x = self.pool(x)                    # 18 x 18 x 128 -&gt; 9 x 9 x 128
+
+        # Fourth block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+        x = F.relu(self.bn4(self.conv4(x)))  # 9 x 9 x 128 -&gt; 9 x 9 x 256
+        x = self.pool(x)                    # 9 x 9 x 256 -&gt; 4 x 4 x 256
+
+        # Adaptive average pooling to 1x1
+        x = self.adap_pool(x)               # 4 x 4 x 256 -&gt; 1 x 1 x 256
+
+        # Flatten the spatial dimensions and pass through the fully connected layer
+        x = torch.flatten(x, 1)             # Flatten the 1x1x256 to a 256-dimensional vector
+        x = self.fc(x)                      # Final feature representation (batch_size, output_features)
+
+        return x</code></pre>
+</details>
+<div class="desc"><p>Encoder network for extracting latent features from input images.
+This encoder consists of multiple convolutional layers, each followed by
+batch normalization, ReLU activation, and pooling layers. The final representation
+is obtained via adaptive average pooling and a fully connected layer.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt>conv1, conv2, conv3, conv4 (nn.Conv2d): Convolutional layers for feature extraction.</dt>
+<dt>bn1, bn2, bn3, bn4 (nn.BatchNorm2d): Batch normalization layers for stabilizing training.</dt>
+<dt><strong><code>pool</code></strong> :&ensp;<code>nn.MaxPool2d</code></dt>
+<dd>Max pooling layer to reduce spatial dimensions.</dd>
+<dt><strong><code>adap_pool</code></strong> :&ensp;<code>nn.AdaptiveAvgPool2d</code></dt>
+<dd>Adaptive average pooling to generate fixed-size output.</dd>
+<dt><strong><code>fc</code></strong> :&ensp;<code>nn.Linear</code></dt>
+<dd>Fully connected layer to generate the final latent representation.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>forward(x): Forward pass through the encoder to generate feature representations.</p>
+<p>Initializes the encoder model.</p>
+<h2 id="parameters">Parameters</h2>
+<p>input_channels (int): Number of input channels (e.g., number of color channels in an image).
+output_features (int): Number of output features (embedding dimension).</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.representation_learning.model_cl.Encoder.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.representation_learning.model_cl.Encoder.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="src.representation_learning.model_cl.Encoder.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="src.representation_learning.model_cl.Encoder.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x):
+    &#34;&#34;&#34;
+    Forward pass through the encoder.
+
+    Parameters:
+        x (torch.Tensor): Input tensor of shape (batch_size, input_channels, height, width).
+
+    Returns:
+        torch.Tensor: Latent feature representation of shape (batch_size, output_features).
+    &#34;&#34;&#34;
+    # First block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+    x = F.relu(self.bn1(self.conv1(x)))  # 75 x 75 x 5 -&gt; 75 x 75 x 32
+    x = self.pool(x)                    # 75 x 75 x 32 -&gt; 37 x 37 x 32
+
+    # Second block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+    x = F.relu(self.bn2(self.conv2(x)))  # 37 x 37 x 32 -&gt; 37 x 37 x 64
+    x = self.pool(x)                    # 37 x 37 x 64 -&gt; 18 x 18 x 64
+
+    # Third block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+    x = F.relu(self.bn3(self.conv3(x)))  # 18 x 18 x 64 -&gt; 18 x 18 x 128
+    x = self.pool(x)                    # 18 x 18 x 128 -&gt; 9 x 9 x 128
+
+    # Fourth block: Conv -&gt; BN -&gt; ReLU -&gt; Pool
+    x = F.relu(self.bn4(self.conv4(x)))  # 9 x 9 x 128 -&gt; 9 x 9 x 256
+    x = self.pool(x)                    # 9 x 9 x 256 -&gt; 4 x 4 x 256
+
+    # Adaptive average pooling to 1x1
+    x = self.adap_pool(x)               # 4 x 4 x 256 -&gt; 1 x 1 x 256
+
+    # Flatten the spatial dimensions and pass through the fully connected layer
+    x = torch.flatten(x, 1)             # Flatten the 1x1x256 to a 256-dimensional vector
+    x = self.fc(x)                      # Final feature representation (batch_size, output_features)
+
+    return x</code></pre>
+</details>
+<div class="desc"><p>Forward pass through the encoder.</p>
+<h2 id="parameters">Parameters</h2>
+<p>x (torch.Tensor): Input tensor of shape (batch_size, input_channels, height, width).</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>Latent feature representation of shape (batch_size, output_features).</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.representation_learning" href="index.html">src.representation_learning</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.representation_learning.model_cl.CL" href="#src.representation_learning.model_cl.CL">CL</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.representation_learning.model_cl.CL.call_super_init" href="#src.representation_learning.model_cl.CL.call_super_init">call_super_init</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.CL.dump_patches" href="#src.representation_learning.model_cl.CL.dump_patches">dump_patches</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.CL.forward" href="#src.representation_learning.model_cl.CL.forward">forward</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.CL.get_latent" href="#src.representation_learning.model_cl.CL.get_latent">get_latent</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.CL.loss" href="#src.representation_learning.model_cl.CL.loss">loss</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.CL.simclr_transform" href="#src.representation_learning.model_cl.CL.simclr_transform">simclr_transform</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.CL.training" href="#src.representation_learning.model_cl.CL.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.representation_learning.model_cl.Encoder" href="#src.representation_learning.model_cl.Encoder">Encoder</a></code></h4>
+<ul class="">
+<li><code><a title="src.representation_learning.model_cl.Encoder.call_super_init" href="#src.representation_learning.model_cl.Encoder.call_super_init">call_super_init</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.Encoder.dump_patches" href="#src.representation_learning.model_cl.Encoder.dump_patches">dump_patches</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.Encoder.forward" href="#src.representation_learning.model_cl.Encoder.forward">forward</a></code></li>
+<li><code><a title="src.representation_learning.model_cl.Encoder.training" href="#src.representation_learning.model_cl.Encoder.training">training</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

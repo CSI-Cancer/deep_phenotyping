@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>pipeline.src.pipeline API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pipeline.src.pipeline</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pipeline.src.pipeline.extract_features"><code class="name flex">
+<span>def <span class="ident">extract_features</span></span>(<span>frame, params)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_features(frame, params):
+    &#34;&#34;&#34;
+    Extract features from a segmented frame.
+
+    Parameters:
+        frame (Frame object): The input frame containing image data.
+        params (dict): Dictionary containing feature extraction parameters, including:
+            - filters (list): Filters to apply during feature extraction.
+            - extract_img (bool): Flag to indicate whether to extract cropped images.
+            - width (int): Width of the extracted image crop.
+            - mask_flag (bool): Whether to include masks during crop extraction.
+
+    Returns:
+        dict: A dictionary containing:
+            - &#34;features&#34;: DataFrame of calculated features.
+            - &#34;images&#34;: Array of cropped event images (if extracted).
+            - &#34;masks&#34;: Array of cropped event masks (if extracted).
+    &#34;&#34;&#34;
+    # Calculate basic features from the frame
+    features = frame.calc_basic_features()
+
+    # Initialize variables to store images and masks
+    images = None
+    masks = None
+
+    # Apply event filtering if specified
+    if len(params[&#34;filters&#34;]) != 0:
+        features = utils.filter_events(
+            features, params[&#34;filters&#34;], params[&#34;verbose&#34;]
+        )
+
+    # Extract images and masks if feature extraction is enabled
+    if features is not None:
+        if params[&#34;extract_img&#34;]:
+            images, masks = frame.extract_crops(
+                features, params[&#34;width&#34;], mask_flag=params[&#34;mask_flag&#34;]
+            )
+
+    return {&#34;features&#34;: features, &#34;images&#34;: images, &#34;masks&#34;: masks}</code></pre>
+</details>
+<div class="desc"><p>Extract features from a segmented frame.</p>
+<h2 id="parameters">Parameters</h2>
+<p>frame (Frame object): The input frame containing image data.
+params (dict): Dictionary containing feature extraction parameters, including:
+- filters (list): Filters to apply during feature extraction.
+- extract_img (bool): Flag to indicate whether to extract cropped images.
+- width (int): Width of the extracted image crop.
+- mask_flag (bool): Whether to include masks during crop extraction.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>A dictionary containing:
+- "features": DataFrame of calculated features.
+- "images": Array of cropped event images (if extracted).
+- "masks": Array of cropped event masks (if extracted).</dd>
+</dl></div>
+</dd>
+<dt id="pipeline.src.pipeline.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+
+    # main inputs
+    parser = argparse.ArgumentParser(
+        description=&#34;Process slide images to identify cells.&#34;,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+
+    parser.add_argument(
+        &#34;-i&#34;,
+        &#34;--input&#34;,
+        type=str,
+        required=True,
+        help=&#34;input path to slide images&#34;,
+    )
+
+    parser.add_argument(
+        &#34;-o&#34;, &#34;--output&#34;, type=str, required=True, help=&#34;output path&#34;
+    )
+
+    parser.add_argument(
+        &#34;-m&#34;,
+        &#34;--mask_path&#34;,
+        type=str,
+        default=None,
+        help=&#34;mask path to save frame masks if needed&#34;,
+    )
+
+    parser.add_argument(
+        &#34;-f&#34;, &#34;--offset&#34;, type=int, default=0, help=&#34;start frame offset&#34;
+    )
+
+    parser.add_argument(
+        &#34;-n&#34;, &#34;--nframes&#34;, type=int, default=2304, help=&#34;number of frames&#34;
+    )
+
+    parser.add_argument(
+        &#34;-c&#34;,
+        &#34;--channels&#34;,
+        type=str,
+        nargs=&#34;+&#34;,
+        default=[&#34;DAPI&#34;, &#34;TRITC&#34;, &#34;CY5&#34;, &#34;FITC&#34;],
+        help=&#34;channel names&#34;,
+    )
+
+    parser.add_argument(
+        &#34;-s&#34;,
+        &#34;--starts&#34;,
+        type=int,
+        nargs=&#34;+&#34;,
+        default=[1, 2305, 4609, 9217],
+        help=&#34;channel start indices&#34;,
+    )
+
+    parser.add_argument(
+        &#34;-F&#34;,
+        &#34;--format&#34;,
+        type=str,
+        nargs=&#34;+&#34;,
+        default=[&#34;Tile%06d.tif&#34;],
+        help=&#34;image name format&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--encoder_model&#34;,
+        required=True,
+        type=str,
+        help=&#34;path to model for inference&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--mask_model&#34;,
+        required=True,
+        type=str,
+        help=&#34;path to model for segmentation model&#34;,
+    )
+
+    parser.add_argument(
+        &#34;-v&#34;, &#34;--verbose&#34;, action=&#34;count&#34;, default=0, help=&#34;verbosity level&#34;
+    )
+
+    parser.add_argument(
+        &#34;-t&#34;,
+        &#34;--threads&#34;,
+        type=int,
+        default=0,
+        help=&#34;number of threads for parallel processing&#34;,
+    )
+
+    # Segmentation parameters
+    parser.add_argument(
+        &#34;--tophat_size&#34;, type=int, default=45, help=&#34;TopHat filter kernel size&#34;
+    )
+
+    parser.add_argument(
+        &#34;--open_size&#34;,
+        type=int,
+        default=5,
+        help=&#34;Open morphological filter kernel size&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--mask_channels&#34;,
+        type=str,
+        nargs=&#34;+&#34;,
+        default=[&#34;DAPI&#34;, &#34;TRITC&#34;, &#34;CY5&#34;, &#34;FITC&#34;],
+        help=&#34;channels to segment&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--exclude_border&#34;,
+        default=False,
+        action=&#34;store_true&#34;,
+        help=&#34;exclude events that are on image borders&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--include_edge_frames&#34;,
+        default=False,
+        action=&#34;store_true&#34;,
+        help=&#34;include frames that are on the edge of slide&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--selected_frames&#34;,
+        type=int,
+        nargs=&#34;*&#34;,
+        default=[],
+        help=&#34;list of selected frames to be processed&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--extract_images&#34;,
+        default=True,
+        action=&#34;store_true&#34;,
+        help=&#34;extract images of detected events for inference [always true]&#34;,
+    )
+
+    parser.add_argument(
+        &#34;-w&#34;,
+        &#34;--width&#34;,
+        type=int,
+        default=75,
+        help=&#34;&#34;&#34;
+        size of the event images to be cropped from slide images [always 75]
+        &#34;&#34;&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--inference_batch&#34;,
+        type=int,
+        default=10000,
+        help=&#34;inference batch size&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--frame_batch&#34;,
+        type=int,
+        default=200,
+        help=&#34;frame processing batch size&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--mask_flag&#34;,
+        default=True,
+        action=&#34;store_true&#34;,
+        help=&#34;store event masks when extracting images [always True]&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--sort&#34;,
+        type=str,
+        nargs=2,
+        action=&#34;append&#34;,
+        default=[],
+        help=&#34;&#34;&#34;
+        sort events based on feature values.
+
+        Usage:   &lt;command&gt; --sort &lt;feature&gt; &lt;order&gt;
+        Example: &lt;command&gt; --sort TRITC_mean I
+        order:    I: Increasing / D: Decreasing
+        &#34;&#34;&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--filter&#34;,
+        type=str,
+        nargs=3,
+        action=&#34;append&#34;,
+        default=[],
+        help=&#34;&#34;&#34;
+        feature range for filtering detected events.
+
+        Usage:    &lt;command&gt; --feature_range &lt;feature&gt; &lt;min&gt; &lt;max&gt;
+        Example:  &lt;command&gt; --feature_range DAPI_mean 0 10000
+        &#34;&#34;&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--debug&#34;,
+        default=False,
+        action=&#34;store_true&#34;,
+        help=&#34;activate debug mode to save hdf5 files&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--normalize&#34;,
+        type=str,
+        default=None,
+        help=&#34;input path to h5 reference file for normalization&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--device&#34;,
+        type=str,
+        default=&#34;cuda:1&#34;,
+        help=&#34;device to use for segmentation and inference. set to cpu if not GPU available. set to cuda:0, cuda:1, etc. for specific GPU. set to mps for mac.&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--workers&#34;,
+        type=int,
+        default=16,
+        help=&#34;number of workers for cellpose segmentation. Limited with memory, so monitor your usage.&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--classifier_model&#34;,
+        type=str,
+        default=None,
+        help=&#34;path to model for classification&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--n_classes&#34;,
+        type=int,
+        default=0,
+        help=&#34;number of classes in the model&#34;,
+    )
+
+    parser.add_argument(
+        &#34;--scaler&#34;,
+        type=str,
+        default=None,
+        help=&#34;path to scaler for classification&#34;,
+    )
+
+    args = parser.parse_args()
+
+    # Check if channel names and channel indices have same length
+    if len(args.channels) != len(args.starts) and len(args.channels) != len(args.format):
+        print(&#34;number of channels do not match with number of starts or name formats&#34;)
+        sys.exit(-1)
+
+    process_frames(args)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pipeline.src.pipeline.post_process_frame"><code class="name flex">
+<span>def <span class="ident">post_process_frame</span></span>(<span>frame, params)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def post_process_frame(frame, params):
+    &#34;&#34;&#34;
+    Post-process a frame after segmentation, primarily for normalization.
+
+    Parameters:
+        frame (Frame object): The frame to be post-processed.
+        params (dict): Dictionary containing normalization settings.
+
+    Returns:
+        np.ndarray: The normalized image after post-processing.
+    &#34;&#34;&#34;
+    # Perform histogram matching to a reference image for normalization
+    image = hist_utils.match_image_to_reference(
+        frame, params, params[&#39;normalize&#39;]
+    )
+
+    return image</code></pre>
+</details>
+<div class="desc"><p>Post-process a frame after segmentation, primarily for normalization.</p>
+<h2 id="parameters">Parameters</h2>
+<p>frame (Frame object): The frame to be post-processed.
+params (dict): Dictionary containing normalization settings.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The normalized image after post-processing.</dd>
+</dl></div>
+</dd>
+<dt id="pipeline.src.pipeline.preprocess_frame"><code class="name flex">
+<span>def <span class="ident">preprocess_frame</span></span>(<span>frame, params)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def preprocess_frame(frame, params):
+    &#34;&#34;&#34;
+    Preprocess frame images for segmentation and feature extraction.
+
+    Parameters:
+        frame (Frame object): The input frame containing image data.
+        params (dict): Dictionary containing preprocessing parameters, including:
+            - tophat_size (int): Size of the structuring element for the tophat operation.
+            - mask_ch (list): List of channels to apply the tophat transformation.
+
+    Modifies:
+        frame.image (np.ndarray): Applies tophat transformation to specified channels.
+    &#34;&#34;&#34;
+    # Apply tophat morphological operation if size is specified
+    if params[&#34;tophat_size&#34;] != 0:
+        tophat_kernel = cv2.getStructuringElement(
+            cv2.MORPH_ELLIPSE, (params[&#34;tophat_size&#34;], params[&#34;tophat_size&#34;])
+        )
+
+        # Apply tophat transformation to specified channels
+        for ch in params[&#34;mask_ch&#34;]:
+            i = frame.get_ch(ch)  # Get the channel index
+            frame.image[..., i] = cv2.morphologyEx(
+                frame.image[..., i], cv2.MORPH_TOPHAT, tophat_kernel
+            )</code></pre>
+</details>
+<div class="desc"><p>Preprocess frame images for segmentation and feature extraction.</p>
+<h2 id="parameters">Parameters</h2>
+<p>frame (Frame object): The input frame containing image data.
+params (dict): Dictionary containing preprocessing parameters, including:
+- tophat_size (int): Size of the structuring element for the tophat operation.
+- mask_ch (list): List of channels to apply the tophat transformation.</p>
+<h2 id="modifies">Modifies</h2>
+<p>frame.image (np.ndarray): Applies tophat transformation to specified channels.</p></div>
+</dd>
+<dt id="pipeline.src.pipeline.process_frames"><code class="name flex">
+<span>def <span class="ident">process_frames</span></span>(<span>args)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def process_frames(args):
+
+    &#34;&#34;&#34;
+    Process multiple frames for segmentation, feature extraction, and analysis. 
+    This is the core function that orchestrates the entire pipeline.
+    It handles loading models, reading images, segmenting cells, extracting features
+
+    Parameters:
+        args (Namespace): Argument parser namespace containing the following:
+            - input (str): Path to the input data directory.
+            - output (str): Path to save the processed results.
+            - nframes (int): Number of frames to process.
+            - threads (int): Number of parallel processing threads.
+            - workers (int): Number of worker processes for segmentation.
+            - encoder_model (str): Path to the encoder model for feature extraction.
+            - mask_model (str): Path to the Cellpose model for segmentation.
+            - device (str): Computation device (&#39;cpu&#39; or &#39;cuda&#39;).
+            - other processing and model parameters.
+    &#34;&#34;&#34;
+
+    mp.set_start_method(&#39;spawn&#39;, force=True)
+
+    # Create logger object
+    logger = utils.get_logger(__name__, args.verbose)
+
+    # Input variables
+    in_path = args.input
+    output = args.output
+    n_frames = args.nframes
+    channels = args.channels
+    starts = args.starts
+    offset = args.offset
+    name_format = args.format
+    n_threads = args.threads
+    include_edge = args.include_edge_frames
+
+    # Segmentation parameters
+    params = {
+        &#34;tophat_size&#34;: args.tophat_size,
+        &#34;opening_size&#34;: args.open_size,
+        #&#34;blur_size&#34;: args.blur_size,
+        #&#34;blur_sigma&#34;: args.blur_sigma,
+        #&#34;thresh_size&#34;: args.thresh_size,
+        #&#34;thresh_offset&#34;: args.thresh_offsets,
+        #&#34;min_dist&#34;: args.min_seed_dist,
+        #&#34;seed_ch&#34;: args.seed_channel,
+        &#34;mask_ch&#34;: args.mask_channels,
+        &#34;mask_path&#34;: args.mask_path,
+        &#34;name_format&#34;: args.format,
+        &#34;exclude_border&#34;: args.exclude_border,
+        &#34;filters&#34;: args.filter,
+        &#34;extract_img&#34;: args.extract_images,
+        &#34;width&#34;: args.width,
+        &#34;mask_flag&#34;: args.mask_flag,
+        &#34;verbose&#34;: args.verbose,
+        &#34;normalize&#34;: args.normalize,
+        &#34;channel_names&#34;: args.channels,
+        &#34;debug&#34;: args.debug,
+    }
+
+    logger.info(&#34;Detecting available GPUs...&#34;)
+    n_gpus = torch.cuda.device_count()
+    #logger.info(f&#34;Number of GPUs available: {n_gpus}&#34;)
+
+    if n_gpus == 0 and args.device != &#39;cpu&#39;:
+        logger.error(&#34;No GPUs detected. Exiting.&#34;)
+        sys.exit(-1)
+    #add a check if the device is within the range of available GPUs
+    if args.device != &#39;cpu&#39;:
+        if args.device not in [f&#39;cuda:{i}&#39; for i in range(n_gpus)] and args.device != &#39;mps&#39; and args.device != &#39;cuda&#39;:
+            logger.error(&#34;The device specified is not within the range of available GPUs. Exiting.&#34;)
+            sys.exit(-1)
+    
+
+    logger.info(&#34;Loading Cellpose model to GPU...&#34;)
+    cellpose_model = models.CellposeModel(gpu=True, pretrained_model=args.mask_model,device=torch.device(args.device))
+    logger.info(&#34;Finished loading Cellpose model.&#34;)
+
+    logger.info(&#34;Loading encoder model to GPU...&#34;)
+    model = load_model(args.encoder_model, device=args.device).to(args.device).eval()
+    logger.info(&#34;Finished loading encoder model.&#34;)
+
+
+    logger.info(&#34;Loading frames...&#34;)
+    # Check if there is a selection of frames to process
+    if args.selected_frames:
+        frame_ids = args.selected_frames
+    else:
+        frame_ids = [i + offset + 1 for i in range(n_frames)]
+
+    # Read and preprocess frames in parallel
+    n_proc = n_threads if n_threads &gt; 0 else mp.cpu_count()
+
+
+    read_preprocess_partial = partial(
+        read_and_preprocess_frame,
+        in_path=in_path,
+        channels=channels,
+        starts=starts,
+        name_format=name_format,
+        include_edge=include_edge,
+        params=params
+    )
+
+    with mp.Pool(n_proc) as pool:
+        frames = pool.map(read_preprocess_partial, frame_ids)
+
+    # Filter out None frames (edge frames)
+    frames = [frame for frame in frames if frame is not None]
+
+    logger.info(&#34;Finished loading and preprocessing frames.&#34;)
+
+
+    logger.info(&#34;Segmenting frames...&#34;)
+
+
+    with ProcessPoolExecutor(max_workers=args.workers) as executor:
+        masks = list(tqdm.tqdm(executor.map(segment_frame, [(frame, cellpose_model, params) for frame in frames])))
+
+    # Removing edge events
+    for i, mask in enumerate(masks):
+        labels = np.unique(np.concatenate([mask[0,:], mask[-1,:], mask[:,0], mask[:,-1]]))
+        for label in labels:
+            masks[i][mask == label] = 0
+
+    for frame, mask in zip(frames, masks):
+        frame.mask = mask.astype(&#34;uint16&#34;)
+        # Saving the mask
+        if params[&#34;mask_path&#34;] is not None:
+            frame.writeMask(params[&#34;mask_path&#34;])
+
+    del masks, cellpose_model
+    torch.cuda.empty_cache()
+    gc.collect()
+    
+    logger.info(&#34;Finished segmenting frames.&#34;)
+
+
+    if args.normalize is not None:
+        # Post-process frames using multiprocessing pool
+        logger.info(&#34;Post-processing frames...&#34;)
+        post_process_partial = partial(post_process_frame, params=params)
+
+        with mp.Pool(n_proc) as pool:
+            norm_images = list(pool.map(post_process_partial, frames))
+        
+        for frame, n_image in zip(frames, norm_images):
+            frame.image = n_image
+
+        del norm_images
+
+        logger.info(&#34;Finished post-processing frames.&#34;)
+
+    all_features = []
+    if args.debug:
+        all_images = []
+        all_masks = []
+
+    while frames:
+        print(f&#34;{len(frames)} frames remaining...&#34;)
+
+        chunk, frames = frames[:args.frame_batch], frames[args.frame_batch:]
+        
+        logger.info(&#34;Processing the frames...&#34;)
+        n_proc = 8
+
+        # Use a context manager to ensure the pool is closed
+        with mp.Pool(n_proc) as pool:
+            data = pool.map(partial(extract_features, params=params), chunk)
+
+
+        logger.info(&#34;Finished processing the frames.&#34;)
+
+        del chunk
+        gc.collect()
+
+        logger.info(&#34;Collecting features...&#34;)
+        features = [
+            out[&#34;features&#34;] for out in data if out[&#34;features&#34;] is not None
+        ]
+        if len(features)==0:
+            logger.error(&#34;No events to report in this set of frames!&#34;)
+            sys.exit(-1)
+        else:
+            features = pd.concat(features, ignore_index=True)
+        
+        images = None
+        masks = None
+
+        if args.extract_images:
+            logger.info(&#34;Collecting event images...&#34;)
+            images = np.concatenate(
+                [out[&#34;images&#34;] for out in data if out[&#34;images&#34;] is not None],
+                axis=0
+            )
+
+            if args.mask_flag:
+                logger.info(&#34;Collecting event masks...&#34;)
+                masks = np.concatenate(
+                    [out[&#34;masks&#34;] for out in data if out[&#34;masks&#34;] is not None],
+                    axis=0
+                )
+        
+        del data
+        gc.collect()
+        
+        # Applying the input sortings
+        if len(args.sort) != 0:
+            logger.info(&#34;Sorting events...&#34;)
+            features = utils.sort_events(features, args.sort, args.verbose)
+            logger.info(&#34;Finished sorting events.&#34;)
+            images = images[list(features.index)]
+            masks = masks[list(features.index)]
+            features.reset_index(drop=True, inplace=True)
+        
+        #Infer latent embeddings
+        logger.info(&#34;Inferring latent features of events...&#34;)
+        dataset = CustomImageDataset(images, masks, labels=np.zeros(images.shape[0]), tran=False)
+
+        dataloader = DataLoader(dataset, batch_size=args.inference_batch, shuffle=False)
+        embeddings = get_embeddings(model, dataloader, args.device)
+        #convert embeddings to numpy array
+        embeddings = embeddings.numpy()
+
+        embeddings_df = pd.DataFrame(
+            embeddings.astype(&#39;float16&#39;),
+            columns=[f&#39;z{i}&#39; for i in range(embeddings.shape[1])])
+        features = pd.concat([features, embeddings_df], axis=1)
+        logger.info(&#34;Finished inferring latent features.&#34;)
+
+        if args.debug:
+            all_images.append(images)
+            all_masks.append(masks)
+
+        all_features.append(features)
+        
+        del dataset, dataloader, embeddings, embeddings_df, images, masks, features
+        gc.collect()
+
+    all_features = pd.concat(all_features, axis=0)
+    all_features.astype(basic_features_dtypes)
+
+    logger.info(&#34;Finished processing all frames.&#34;)
+    logger.info(&#34;Saving data...&#34;)
+    all_features.to_parquet(output, compression=&#39;gzip&#39;)
+
+    if args.debug:
+        debug_filename = f&#34;{os.path.dirname(output)}/{os.path.basename(output).split(&#39;.&#39;)[0]}.hdf5&#34;
+        with h5py.File(debug_filename, mode=&#39;w&#39;) as hf:
+            hf.create_dataset(&#34;images&#34;, data=np.concatenate(all_images, axis=0))
+            hf.create_dataset(&#34;channels&#34;, data=args.channels)
+            if args.mask_flag:
+                hf.create_dataset(&#34;masks&#34;, data=np.concatenate(all_masks, axis=0))
+        all_features.to_hdf(debug_filename, mode=&#39;a&#39;, key=&#39;features&#39;)
+
+    logger.info(&#34;Finished saving features.&#34;)</code></pre>
+</details>
+<div class="desc"><p>Process multiple frames for segmentation, feature extraction, and analysis.
+This is the core function that orchestrates the entire pipeline.
+It handles loading models, reading images, segmenting cells, extracting features</p>
+<h2 id="parameters">Parameters</h2>
+<p>args (Namespace): Argument parser namespace containing the following:
+- input (str): Path to the input data directory.
+- output (str): Path to save the processed results.
+- nframes (int): Number of frames to process.
+- threads (int): Number of parallel processing threads.
+- workers (int): Number of worker processes for segmentation.
+- encoder_model (str): Path to the encoder model for feature extraction.
+- mask_model (str): Path to the Cellpose model for segmentation.
+- device (str): Computation device ('cpu' or 'cuda').
+- other processing and model parameters.</p></div>
+</dd>
+<dt id="pipeline.src.pipeline.read_and_preprocess_frame"><code class="name flex">
+<span>def <span class="ident">read_and_preprocess_frame</span></span>(<span>frame_id, in_path, channels, starts, name_format, include_edge, params)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_and_preprocess_frame(frame_id, in_path, channels, starts, name_format, include_edge, params):
+    &#34;&#34;&#34;
+    Read and preprocess a single frame for segmentation and analysis.
+
+    Parameters:
+        frame_id (int): Unique identifier for the frame.
+        in_path (str): Input directory containing image files.
+        channels (list): List of channel names or indices.
+        starts (list): Starting points for reading the image.
+        name_format (str): Naming format of the image files.
+        include_edge (bool): Whether to include edge frames.
+        params (dict): Dictionary containing preprocessing parameters.
+
+    Returns:
+        Frame object or None: The preprocessed frame, or None if discarded.
+    &#34;&#34;&#34;
+    # Generate paths for the frame tiles
+    paths = utils.generate_tile_paths(
+        path=in_path,
+        frame_id=frame_id,
+        starts=starts,
+        name_format=name_format,
+    )
+
+    # Create a Frame object with the specified channels and paths
+    frame = Frame(frame_id=frame_id, channels=channels, paths=paths)
+
+    # Exclude edge frames if specified
+    if not include_edge and frame.is_edge():
+        return None
+
+    # Read the image data into the frame
+    frame.readImage()
+
+    # Apply preprocessing to the frame
+    preprocess_frame(frame, params)
+
+    return frame</code></pre>
+</details>
+<div class="desc"><p>Read and preprocess a single frame for segmentation and analysis.</p>
+<h2 id="parameters">Parameters</h2>
+<p>frame_id (int): Unique identifier for the frame.
+in_path (str): Input directory containing image files.
+channels (list): List of channel names or indices.
+starts (list): Starting points for reading the image.
+name_format (str): Naming format of the image files.
+include_edge (bool): Whether to include edge frames.
+params (dict): Dictionary containing preprocessing parameters.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Frame object</code> or <code>None</code></dt>
+<dd>The preprocessed frame, or None if discarded.</dd>
+</dl></div>
+</dd>
+<dt id="pipeline.src.pipeline.segment_frame"><code class="name flex">
+<span>def <span class="ident">segment_frame</span></span>(<span>args)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def segment_frame(args):
+    &#34;&#34;&#34;
+    Segment a single frame using a pre-trained Cellpose model.
+
+    Parameters:
+        args (tuple): A tuple containing:
+            - frame (Frame object): The input frame for segmentation.
+            - cp_model (CellposeModel): Pre-trained Cellpose model for mask generation.
+            - params (dict): Dictionary containing segmentation parameters.
+
+    Returns:
+        np.ndarray: The binary mask generated by the model.
+    &#34;&#34;&#34;
+    frame, cp_model, params = args
+
+    # Convert image channels to BGR format for segmentation
+    rgb = utils.channels_to_bgr(frame.image, [0, 3], [2, 3], [1, 3])
+
+    # Perform segmentation using the Cellpose model
+    mask, _, _ = cp_model.eval(
+        rgb, diameter=15, channels=[0, 0], batch_size=8
+    )
+
+    return mask</code></pre>
+</details>
+<div class="desc"><p>Segment a single frame using a pre-trained Cellpose model.</p>
+<h2 id="parameters">Parameters</h2>
+<p>args (tuple): A tuple containing:
+- frame (Frame object): The input frame for segmentation.
+- cp_model (CellposeModel): Pre-trained Cellpose model for mask generation.
+- params (dict): Dictionary containing segmentation parameters.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The binary mask generated by the model.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pipeline.src" href="index.html">pipeline.src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="pipeline.src.pipeline.extract_features" href="#pipeline.src.pipeline.extract_features">extract_features</a></code></li>
+<li><code><a title="pipeline.src.pipeline.main" href="#pipeline.src.pipeline.main">main</a></code></li>
+<li><code><a title="pipeline.src.pipeline.post_process_frame" href="#pipeline.src.pipeline.post_process_frame">post_process_frame</a></code></li>
+<li><code><a title="pipeline.src.pipeline.preprocess_frame" href="#pipeline.src.pipeline.preprocess_frame">preprocess_frame</a></code></li>
+<li><code><a title="pipeline.src.pipeline.process_frames" href="#pipeline.src.pipeline.process_frames">process_frames</a></code></li>
+<li><code><a title="pipeline.src.pipeline.read_and_preprocess_frame" href="#pipeline.src.pipeline.read_and_preprocess_frame">read_and_preprocess_frame</a></code></li>
+<li><code><a title="pipeline.src.pipeline.segment_frame" href="#pipeline.src.pipeline.segment_frame">segment_frame</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

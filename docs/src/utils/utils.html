@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>src.utils.utils API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.utils.utils</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.utils.utils.channels_to_bgr"><code class="name flex">
+<span>def <span class="ident">channels_to_bgr</span></span>(<span>image, blue_index, green_index, red_index)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def channels_to_bgr(image, blue_index, green_index, red_index):
+    &#34;&#34;&#34;
+    Convert image channels to BGR 3-color format for visualization.
+
+    Parameters:
+        image (np.ndarray): Input image with shape (H, W, C) or (1, H, W, C).
+        blue_index (list): Indices for blue channels.
+        green_index (list): Indices for green channels.
+        red_index (list): Indices for red channels.
+
+    Returns:
+        np.ndarray: Image in BGR format with combined channels.
+    &#34;&#34;&#34;
+    if len(image.shape) == 3:
+        image = image[np.newaxis, ...]  # Add batch dimension if not present
+
+    # Initialize BGR array
+    bgr = np.zeros((image.shape[0], image.shape[1], image.shape[2], 3), dtype=&#39;float&#39;)
+
+    # Combine specified channels
+    if len(blue_index) != 0:
+        bgr[..., 0] = np.sum(image[..., blue_index], axis=-1)
+    if len(green_index) != 0:
+        bgr[..., 1] = np.sum(image[..., green_index], axis=-1)
+    if len(red_index) != 0:
+        bgr[..., 2] = np.sum(image[..., red_index], axis=-1)
+
+    # Clip values to maximum allowed by dtype
+    max_val = np.iinfo(image.dtype).max
+    bgr[bgr &gt; max_val] = max_val
+    bgr = bgr.astype(image.dtype)
+
+    return bgr</code></pre>
+</details>
+<div class="desc"><p>Convert image channels to BGR 3-color format for visualization.</p>
+<h2 id="parameters">Parameters</h2>
+<p>image (np.ndarray): Input image with shape (H, W, C) or (1, H, W, C).
+blue_index (list): Indices for blue channels.
+green_index (list): Indices for green channels.
+red_index (list): Indices for red channels.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Image in BGR format with combined channels.</dd>
+</dl></div>
+</dd>
+<dt id="src.utils.utils.get_data_loaders"><code class="name flex">
+<span>def <span class="ident">get_data_loaders</span></span>(<span>data_path, batch_size=64)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_data_loaders(data_path, batch_size=64):
+    &#34;&#34;&#34;
+    Create a DataLoader from a given directory containing HDF5 files.
+
+    Parameters:
+        data_path (str): Path to the dataset directory.
+        batch_size (int): Number of samples per batch.
+
+    Returns:
+        tuple: DataLoader, images, masks, labels.
+    &#34;&#34;&#34;
+    types = [d for d in os.listdir(data_path) if os.path.isdir(os.path.join(data_path, d))]
+    images_list, masks_list, labels_list = [], [], []
+
+    for label, t in enumerate(types):
+        current_type_path = os.path.join(data_path, t)
+        current_type_files = glob.glob(os.path.join(current_type_path, &#34;*.hdf5&#34;))
+
+        class_images, class_masks = [], []
+        for file_path in current_type_files:
+            with h5py.File(file_path, &#39;r&#39;) as f:
+                imgs = np.array(f[&#39;images&#39;][:])
+                msks = np.array(f[&#39;masks&#39;][:])
+                class_images.append(imgs)
+                class_masks.append(msks)
+
+        class_images = np.concatenate(class_images, axis=0)
+        class_masks = np.concatenate(class_masks, axis=0)
+
+        class_masks[class_masks &gt; 0] = 1
+        images_list.append(class_images)
+        masks_list.append(class_masks)
+        labels_list.append(np.full(len(class_images), label, dtype=np.int64))
+
+    images = np.concatenate(images_list, axis=0)
+    masks = np.concatenate(masks_list, axis=0)
+    labels = np.concatenate(labels_list, axis=0)
+
+    dataset = CustomImageDataset(images, masks, labels)
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
+
+    return dataloader, images, masks, labels</code></pre>
+</details>
+<div class="desc"><p>Create a DataLoader from a given directory containing HDF5 files.</p>
+<h2 id="parameters">Parameters</h2>
+<p>data_path (str): Path to the dataset directory.
+batch_size (int): Number of samples per batch.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>DataLoader, images, masks, labels.</dd>
+</dl></div>
+</dd>
+<dt id="src.utils.utils.get_embeddings"><code class="name flex">
+<span>def <span class="ident">get_embeddings</span></span>(<span>model, dataloader, device)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_embeddings(model, dataloader, device):
+    &#34;&#34;&#34;
+    Extract embeddings from the encoder model for a given dataset.
+
+    Parameters:
+        model (torch.nn.Module): Trained model to generate embeddings.
+        dataloader (DataLoader): DataLoader object to provide batches of images.
+        device (str or torch.device): Device to perform computations.
+
+    Returns:
+        torch.Tensor: Concatenated embeddings from the entire dataset.
+    &#34;&#34;&#34;
+    model.eval()  # Set model to evaluation mode
+    embeddings = []
+
+    with torch.no_grad():
+        for x, _ in dataloader:
+            x = x.to(device)  # Move data to device
+            embeddings.append(model.encoder(x).detach().cpu())  # Store embeddings
+
+    # Concatenate all embedding tensors
+    embeddings = torch.cat(embeddings)
+    return embeddings</code></pre>
+</details>
+<div class="desc"><p>Extract embeddings from the encoder model for a given dataset.</p>
+<h2 id="parameters">Parameters</h2>
+<p>model (torch.nn.Module): Trained model to generate embeddings.
+dataloader (DataLoader): DataLoader object to provide batches of images.
+device (str or torch.device): Device to perform computations.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>Concatenated embeddings from the entire dataset.</dd>
+</dl></div>
+</dd>
+<dt id="src.utils.utils.load_model"><code class="name flex">
+<span>def <span class="ident">load_model</span></span>(<span>model_path, device)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_model(model_path, device):
+    &#34;&#34;&#34;
+    Load a pre-trained encoder model from a checkpoint file.
+
+    Parameters:
+        model_path (str): Path to the model checkpoint file.
+        device (str or torch.device): Device to load the model onto.
+
+    Returns:
+        torch.nn.Module: Loaded model in evaluation mode.
+    &#34;&#34;&#34;
+    model = CL(in_channels=5, h_dim=128, projection_dim=64)  # Instantiate the model
+    state_dict = torch.load(model_path, map_location=device)[&#39;model_state_dict&#39;]
+    model.load_state_dict(state_dict)  # Load model weights
+    model.eval()  # Set model to evaluation mode
+    return model</code></pre>
+</details>
+<div class="desc"><p>Load a pre-trained encoder model from a checkpoint file.</p>
+<h2 id="parameters">Parameters</h2>
+<p>model_path (str): Path to the model checkpoint file.
+device (str or torch.device): Device to load the model onto.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.nn.Module</code></dt>
+<dd>Loaded model in evaluation mode.</dd>
+</dl></div>
+</dd>
+<dt id="src.utils.utils.save_5channel_tiffs"><code class="name flex">
+<span>def <span class="ident">save_5channel_tiffs</span></span>(<span>images, masks, outfiles)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_5channel_tiffs(images, masks, outfiles):
+    &#34;&#34;&#34;
+    Save each image as a separate 5-channel TIFF file.
+
+    Parameters:
+        images (np.ndarray): Array of images (n, h, w, c).
+        masks (np.ndarray): Array of masks (n, h, w, 1).
+        outfiles (list of str): List of output file paths.
+    &#34;&#34;&#34;
+    if images.ndim != 4 or masks.ndim != 4:
+        raise ValueError(&#34;Expected 4D arrays for images and masks.&#34;)
+
+    if images.shape[:3] != masks.shape[:3]:
+        raise ValueError(&#34;Data and mask shapes do not match.&#34;)
+
+    data = np.concatenate([images, masks], axis=-1)  # Combine image and mask channels
+
+    for i in range(data.shape[0]):
+        img_5ch = np.transpose(data[i], (2, 0, 1))  # Convert to (c, h, w)
+        tifffile.imwrite(outfiles[i], img_5ch, imagej=True, metadata={&#34;axes&#34;: &#34;CYX&#34;})</code></pre>
+</details>
+<div class="desc"><p>Save each image as a separate 5-channel TIFF file.</p>
+<h2 id="parameters">Parameters</h2>
+<p>images (np.ndarray): Array of images (n, h, w, c).
+masks (np.ndarray): Array of masks (n, h, w, 1).
+outfiles (list of str): List of output file paths.</p></div>
+</dd>
+<dt id="src.utils.utils.save_5channel_tiffs_single_file"><code class="name flex">
+<span>def <span class="ident">save_5channel_tiffs_single_file</span></span>(<span>images, masks, out_file)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_5channel_tiffs_single_file(images, masks, out_file):
+    &#34;&#34;&#34;
+    Save a batch of images and masks as a single multi-page 5-channel TIFF file.
+
+    Parameters:
+        images (np.ndarray): Array of images with shape (n, h, w, 4).
+        masks (np.ndarray): Array of masks with shape (n, h, w, 1).
+        out_file (str): Path to the output TIFF file.
+    &#34;&#34;&#34;
+    data_5ch = np.concatenate([images, masks], axis=-1)  # Combine images and masks
+    data_5ch = np.transpose(data_5ch, (0, 3, 1, 2))  # Convert to (n, c, h, w)
+
+    # Save as a multi-page TIFF file
+    tifffile.imwrite(
+        out_file,
+        data_5ch,
+        imagej=True,
+        metadata={&#34;axes&#34;: &#34;TCYX&#34;}
+    )
+    print(f&#34;Saved multi-page TIFF: {out_file}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Save a batch of images and masks as a single multi-page 5-channel TIFF file.</p>
+<h2 id="parameters">Parameters</h2>
+<p>images (np.ndarray): Array of images with shape (n, h, w, 4).
+masks (np.ndarray): Array of masks with shape (n, h, w, 1).
+out_file (str): Path to the output TIFF file.</p></div>
+</dd>
+<dt id="src.utils.utils.shuffle_index"><code class="name flex">
+<span>def <span class="ident">shuffle_index</span></span>(<span>label, p=0.5)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def shuffle_index(label, p=0.5):
+    &#34;&#34;&#34;
+    Class-informed shuffling of indices to introduce additional positive pairs
+    from instances of the same class. This is useful for contrastive learning.
+
+    Parameters:
+        label (np.ndarray or torch.Tensor): Array of class labels.
+        p (float): Proportion of positive pairs to generate within each class (default: 0.5).
+
+    Returns:
+        np.ndarray: Array of shuffled indices.
+    &#34;&#34;&#34;
+    index = np.arange(len(label))  # Initialize index array
+    for l in np.unique(label):
+        size = int(p * torch.sum(label == l))  # Calculate number of positive pairs
+        if size &gt;= 2:
+            # Randomly select indices within the class
+            t1 = np.random.choice(a=index[label == l], size=size, replace=False)
+            t2 = t1.copy()
+            np.random.shuffle(t2)  # Shuffle the selected indices
+            index[t1] = index[t2]  # Swap positions
+    return index</code></pre>
+</details>
+<div class="desc"><p>Class-informed shuffling of indices to introduce additional positive pairs
+from instances of the same class. This is useful for contrastive learning.</p>
+<h2 id="parameters">Parameters</h2>
+<p>label (np.ndarray or torch.Tensor): Array of class labels.
+p (float): Proportion of positive pairs to generate within each class (default: 0.5).</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Array of shuffled indices.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.utils" href="index.html">src.utils</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.utils.utils.channels_to_bgr" href="#src.utils.utils.channels_to_bgr">channels_to_bgr</a></code></li>
+<li><code><a title="src.utils.utils.get_data_loaders" href="#src.utils.utils.get_data_loaders">get_data_loaders</a></code></li>
+<li><code><a title="src.utils.utils.get_embeddings" href="#src.utils.utils.get_embeddings">get_embeddings</a></code></li>
+<li><code><a title="src.utils.utils.load_model" href="#src.utils.utils.load_model">load_model</a></code></li>
+<li><code><a title="src.utils.utils.save_5channel_tiffs" href="#src.utils.utils.save_5channel_tiffs">save_5channel_tiffs</a></code></li>
+<li><code><a title="src.utils.utils.save_5channel_tiffs_single_file" href="#src.utils.utils.save_5channel_tiffs_single_file">save_5channel_tiffs_single_file</a></code></li>
+<li><code><a title="src.utils.utils.shuffle_index" href="#src.utils.utils.shuffle_index">shuffle_index</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
