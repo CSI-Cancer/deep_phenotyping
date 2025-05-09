@@ -2,12 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Phenotyping Documentation</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+        #sidebar {
+            width: 250px;
+            background: #333;
+            color: #fff;
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        #content {
+            margin-left: 20px;
+            padding: 20px;
+            width: 100%;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .subdir-title {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Deep Phenotyping Documentation</h1>
-    <p>This is the primary documentation site for the paper: Contrastive Representation Learning for Single Cell Phenotyping in Fluorescent Whole Slide Imaging of Enrichment-free Liquid Biopsy .</p>
-    <a href="docs/myfile.html">View My Documentation</a>
+    <div id="sidebar">
+        <h2>Navigation</h2>
+
+        <div class="subdir-title">Pipeline / Src</div>
+        <ul>
+            <li><a href="./pipeline/src/index.html">Index</a></li>
+            <li><a href="./pipeline/src/combo_pipeline.html">Combo Pipeline</a></li>
+            <li><a href="./pipeline/src/pipeline.html">Pipeline</a></li>
+            <li><a href="./pipeline/src/wbc_detect.html">WBC Detect</a></li>
+        </ul>
+
+        <div class="subdir-title">Leukocyte Classifier</div>
+        <ul>
+            <li><a href="./src/leukocyte_classifier/index.html">Index</a></li>
+            <li><a href="./src/leukocyte_classifier/train_wbc.html">Train WBC</a></li>
+            <li><a href="./src/leukocyte_classifier/wbc_classifier.html">WBC Classifier</a></li>
+            <li><a href="./src/leukocyte_classifier/wbc_dataloader.html">WBC Dataloader</a></li>
+        </ul>
+
+        <div class="subdir-title">Representation Learning</div>
+        <ul>
+            <li><a href="./src/representation_learning/index.html">Index</a></li>
+            <li><a href="./src/representation_learning/cl_transforms.html">CL Transforms</a></li>
+            <li><a href="./src/representation_learning/data_loader.html">Data Loader</a></li>
+            <li><a href="./src/representation_learning/model_cl.html">Model CL</a></li>
+            <li><a href="./src/representation_learning/train_cl.html">Train CL</a></li>
+        </ul>
+
+        <div class="subdir-title">Utils</div>
+        <ul>
+            <li><a href="./src/utils/index.html">Index</a></li>
+            <li><a href="./src/utils/generate_masks.html">Generate Masks</a></li>
+            <li><a href="./src/utils/normalization_utils.html">Normalization Utils</a></li>
+            <li><a href="./src/utils/utils.html">Utils</a></li>
+        </ul>
+
+    </div>
+
+    <div id="content">
+        <h1>Welcome to the Deep Phenotyping Documentation</h1>
+        <p>This is the homepage of our project documentation. Use the sidebar to navigate through the sections.</p>
+    </div>
 </body>
 </html>
