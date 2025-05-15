@@ -10,6 +10,10 @@ import os
 import sys
 sys.path.append('/mnt/deepstore/Final_DeepPhenotyping/')
 
+# Add the project root to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(project_root)
+
 from src.leukocyte_classifier.wbc_classifier import CNNModel
 from src.leukocyte_classifier.wbc_dataloader import get_data_loaders
 

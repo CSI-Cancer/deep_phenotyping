@@ -4,8 +4,12 @@ import torch.nn.functional as F
 from torchvision import transforms
 import torch
 import sys
+import os
 
-sys.path.append('/mnt/deepstore/Final_DeepPhenotyping/')
+# Add the project root to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(project_root)
+
 from src.representation_learning.cl_transforms import CustomColorJitter
 
 class Encoder(nn.Module):

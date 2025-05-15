@@ -7,7 +7,8 @@ import pandas as pd
 import yaml
 
 import sys
-sys.path.append('/mnt/deepstore/Final_DeepPhenotyping/')
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(project_root)
 from src.representation_learning.model_cl import CL as Model
 from src.representation_learning.data_loader import get_data_loaders
 

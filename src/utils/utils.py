@@ -10,7 +10,9 @@ import h5py
 from torch.utils.data import DataLoader, Dataset
 
 import sys
-sys.path.append('/mnt/deepstore/Final_DeepPhenotyping')
+# Add the project root to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(project_root)
 from src.representation_learning.model_cl import CL
 from src.representation_learning.data_loader import CustomImageDataset
 

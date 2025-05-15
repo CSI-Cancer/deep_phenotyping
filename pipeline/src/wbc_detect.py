@@ -20,7 +20,10 @@ from cellpose import models
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import tqdm
 
-sys.path.append('/mnt/deepstore/Final_DeepPhenotyping/')
+
+# Add the project root to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(project_root)
 
 import src.utils.normalization_utils as hist_utils
 from src.leukocyte_classifier.wbc_dataloader import CustomImageDataset

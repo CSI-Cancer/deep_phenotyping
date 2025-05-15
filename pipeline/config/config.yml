@@ -1,10 +1,10 @@
-slides: /mnt/deepstore/Final_DeepPhenotyping/pipeline/metadata/input_data/fig4_patient_slides_2_all.txt
-slides_metadata: /mnt/deepstore/Final_DeepPhenotyping/pipeline/metadata/fig4_patient_slides_2_metadata.txt
-output_dir: /mnt/deepstore/Final_DeepPhenotyping/pipeline/output/patient_data_04_27
-mask_model_path: /mnt/deepstore/Final_DeepPhenotyping/pipeline/model_weights/cellpose_model
-encode_model_path: /mnt/deepstore/Final_DeepPhenotyping/pipeline/model_weights/representation_model_04_27.pth
-classifier_path: /mnt/deepstore/Final_DeepPhenotyping/pipeline/model_weights/wbc_model_0225.pth
-detect_and_infer: /mnt/deepstore/Final_DeepPhenotyping/pipeline/src/pipeline.py
+slides: /pipeline/metadata/sample_wsis.txt
+slides_metadata: /pipeline/metadata/wsi_paths.txt
+output_dir: /pipeline/output/patient_data_04_27
+mask_model_path: /pipeline/model_weights/cellpose_model
+encode_model_path: /pipeline/model_weights/representation_model_04_27.pth
+classifier_path: /pipeline/model_weights/wbc_model_0225.pth
+detect_and_infer: /pipeline/src/pipeline.py
 n_threads: 8
 device: cuda:1 # Change between 'cuda:0' and 'cuda:1' for two concurrent runs
 verbose: '-v' # '-v' -> verbose | '' -> non-verbose
