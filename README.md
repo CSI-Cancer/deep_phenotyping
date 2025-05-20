@@ -1,4 +1,4 @@
-# **Contrastive Representation Learning for Single Cell Phenotyping in Fluorescent Whole Slide Imaging of Enrichment-free Liquid Biopsy**
+# **Contrastive Representation Learning for Single Cell Phenotyping in Whole Slide Imaging of Enrichment-free Liquid Biopsy**
 
 ## **Overview**
 
@@ -53,7 +53,6 @@ cd deep_phenotyping
 conda create -n deep_phenotyping python=3.9.7
 conda activate deep_phenotyping
 pip install -r requirements.txt
-conda list #verify installation
 ```
 
 a. Run Model Training on Data (train_cl.py)
