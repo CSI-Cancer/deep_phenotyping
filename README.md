@@ -38,16 +38,7 @@ Model Training Schema
 
 ### **USAGE**
 
-This code was developed on Linux machinery and has only been adequately tested on Ubuntu 22.04. 
-
-Installation of github version
-
 1. Clone this repository
-```
-git@github.com:CSI-Cancer/deep_phenotyping.git
-cd deep_phenotyping
-```
-
 2. Create conda environment:
 ```
 conda create -n deep_phenotyping python=3.9.7
@@ -65,6 +56,8 @@ b. Run pipeline in terminal
 pipeline/run.sh
 
 ```
+This code was developed on Linux machinery and has only been adequately tested on Ubuntu 22.04.
+
 ---
 
 ## **Directory Structure**
