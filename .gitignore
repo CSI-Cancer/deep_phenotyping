@@ -1,4 +1,4 @@
-# Ignore __pycache__ directories
+#Ignore __pycache__ directories
 __pycache__/
 */__pycache__/
 
@@ -6,3 +6,11 @@ __pycache__/
 .snakemake/
 */.snakemake/
 
+#Ignore .tif files
+*.tif
+
+#Ignore hdf5 files
+*.hdf5
+
+#Ignore parquet files
+*.parquet.gz
