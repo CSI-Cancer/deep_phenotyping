@@ -56,6 +56,9 @@ pip install -r requirements.txt
 ```
 
 a. Run Model Training on Data (train_cl.py)
+```
+python train_cl.py --config config/config.yml --sweep_config config/sweep_config.yml
+```
 
 b. Run pipeline in terminal 
 ```
