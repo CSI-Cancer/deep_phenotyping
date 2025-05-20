@@ -5,6 +5,7 @@ from torch.optim.lr_scheduler import LambdaLR
 import os
 import pandas as pd
 import yaml
+import argparse
 
 import sys
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
@@ -246,16 +247,22 @@ class Trainer(object):
         torch.save(checkpoint, fname)
 
 
-
 if __name__ == '__main__':
-    with open('/mnt/deepstore/LBxPheno/src/representation_learning/config/config.yml') as f:
+
+    parser = argparse.ArgumentParser(description='Train contrastive learning model')
+    parser.add_argument('--config', type=str, required=True,
+                      help='Path to main config YAML file')
+    parser.add_argument('--sweep-config', type=str, required=True, 
+                      help='Path to sweep config YAML file')
+    args = parser.parse_args()
+
+    with open(args.config) as f:
         config = yaml.safe_load(f)
-    with open('/mnt/deepstore/LBxPheno/src/representation_learning/config/sweep_config.yml') as f:
+    with open(args.sweep_config) as f:
         sweep_config = yaml.safe_load(f)
 
     os.makedirs(config['model_path'], exist_ok=True)
     os.makedirs(config['output_csv'], exist_ok=True)
-    #os.makedirs(config['output_hdf'], exist_ok=True)
 
     trainer = Trainer(config=config)
     if config['tune']:

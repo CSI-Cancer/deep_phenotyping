@@ -2,11 +2,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-
-# For image reading and processing
 import numpy as np
 import os
-
 import sys
 
 
@@ -98,17 +95,16 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs, device):
 
 
 # Main function to set up data loaders, model, and start training
-def main():
+def main(args):
     # Hyperparameters
-    num_epochs = 25
-    batch_size = 32
-    learning_rate = 1e-6
+    num_epochs = args.num_epochs
+    batch_size = args.batch_size
+    learning_rate = args.learning_rate
 
-    device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
+    device = torch.device(args.device)
 
-    
     # Get data loaders
-    train_loader, val_loader = get_data_loaders(data_path="/mnt/deepstore/LBxPheno/train_data/wbc_classifier/processed")
+    train_loader, val_loader = get_data_loaders(data_path=args.data_path)
 
     dataloaders = {'train': train_loader, 'val': val_loader}
 
@@ -121,12 +117,26 @@ def main():
     model = train_model(model, dataloaders, criterion, optimizer, num_epochs, device)
 
     # Save the trained model
-    torch.save(model.state_dict(), '/mnt/deepstore/LBxPheno/output/wbc_classifier/wbc_model.pth')
-
-    #save data loaders
-    torch.save(train_loader, '/mnt/deepstore/LBxPheno/output/wbc_classifier/train_loader.pth')
-    torch.save(val_loader, '/mnt/deepstore/LBxPheno/output/wbc_classifier/val_loader.pth')
+    torch.save(model.state_dict(), args.output_weights)
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Train WBC classifier model')
+
+    parser.add_argument('--data_path', type=str, required=True,
+                      help='Path to training data directory')
+    parser.add_argument('--output_weights', type=str,
+                      default='./wbc_model.pth',
+                      help='Path to save model weights')
+    parser.add_argument('--num_epochs', type=int, default=25,
+                      help='Number of training epochs')
+    parser.add_argument('--batch_size', type=int, default=32,
+                      help='Batch size for training')
+    parser.add_argument('--learning_rate', type=float, default=1e-6,
+                      help='Learning rate for optimizer')
+    parser.add_argument('--device', type=str,
+                      help='Device to use for training')
+
+    args = parser.parse_args()
+
+    main(args)
