@@ -46,6 +46,17 @@ conda activate deep_phenotyping
 pip install -r requirements.txt
 ```
 
+KNOWN ERRORS with installation: 
+datrie (required for snakemake) will not install on some linux systems missing C compilers (gcc). 
+
+Fix:
+```
+sudo apt update
+sudo apt install build-essential python3-dev
+```
+then, repeat installation as above. 
+
+
 a. Run Model Training on Data (train_cl.py)
 ```
 python train_cl.py --config config/config.yml --sweep_config config/sweep_config.yml
